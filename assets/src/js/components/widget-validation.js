@@ -74,7 +74,7 @@ const validateWidget = async (widget) => {
 
         const radiusValueContainer = widget.querySelector('.---mcw--mcs__radiusValue');
 
-        if(radiusValueContainer){
+        if(radiusValueContainer && urlParams.get('radius') ){
             radiusValueContainer.textContent = urlParams.get('radius') + ' km';
         }
 
