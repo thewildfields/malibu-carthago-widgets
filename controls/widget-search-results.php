@@ -2,7 +2,10 @@
 
 function ___mcw__widget_search_results($widget) {
 
-    $pagesQuery = new WP_Query('post_type=page');
+    $pagesQuery = new WP_Query(array(
+        'post_type' => 'page',
+        'posts_per_page' => -1
+    ));
 
     function ___mcw__filter_pages_list($posts) {
         return array_reduce($posts, function($carry, $post) {
@@ -38,8 +41,9 @@ function ___mcw__widget_search_results($widget) {
         'target_page',
         [
             'label' => __('Target Page', 'malibu-carthago-widgets'),
-            'type' => \Elementor\Controls_Manager::SELECT,
+            'type' => \Elementor\Controls_Manager::SELECT2,
             'options' => $pages,
+            'multiple' => false,
             'condition' => [
                 'results_target' => 'different_page'
             ]
