@@ -9,6 +9,8 @@ const selectModel = (widget, model) => {
     const modelItem = widget.querySelector(`[item-value="model-${model}"]`);
 
     // Add Selected Class
+    if(!modelItem){ return; }
+    
     modelItem.classList.add(selectedOptionClass);
 
     // Select Checkbox

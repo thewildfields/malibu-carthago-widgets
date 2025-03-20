@@ -12,7 +12,6 @@ for (let i = 0; i < widgetTextFilterInputs.length; i++) {
         const widget = input.closest('.---mcw--mcs');
 
         const inputFullKey = input.getAttribute('widget-control-key');
-        const searchKey = inputFullKey.split('-')[1]
         const unselectedOptions = widget.querySelectorAll(`.---mcw--mcs__option[item-key="${inputFullKey}"]:not(.---mcw--mcs__option_selected)`);
 
         unselectedOptions.forEach(option => {
