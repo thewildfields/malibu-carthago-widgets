@@ -34,9 +34,14 @@ const validateWidget = async (widget) => {
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    const preselectValues = widget.getAttribute('preselect-values') === 'yes';
+    if( widget.getAttribute('preselect-current-value') ){
+        const model = widget.getAttribute('preselect-current-value');
+        selectModel(widget, model);
+    }
 
-    if(preselectValues){
+    const preselectValuesFromURL = widget.getAttribute('preselect-values') === 'yes';
+
+    if(preselectValuesFromURL){
         
         for( const parameter of urlParams ){
             widget.setAttribute(parameter[0], parameter[1])

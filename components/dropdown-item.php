@@ -2,9 +2,9 @@
 
 function ___mcw__render_dropdown_input_group( $widget, $item, $parameter) {
 
+$itemUniqueString = $parameter.'-'.$item->ID;
+
 ?>
-    
-    <?php $itemUniqueString = $parameter.'-'.$item->ID; ?>
     
     <button
         class="---mcw--mcs__option ---mcw--mcs__option_dropdown"

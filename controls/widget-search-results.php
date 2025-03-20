@@ -62,9 +62,9 @@ function ___mcw__widget_search_results($widget) {
     );
 
     $widget->add_control(
-        'dynamically_select_current',
+        'preselect_current_value',
         [
-            'label' => esc_html__( 'Dynamically select current', 'malibu-carthago-widgets' ),
+            'label' => esc_html__( 'Preselect current vehicle', 'malibu-carthago-widgets' ),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
             'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
@@ -76,7 +76,7 @@ function ___mcw__widget_search_results($widget) {
     $widget->add_control(
         'preselect_values_from_url',
         [
-            'label' => esc_html__( 'Preselect valus from URL', 'malibu-carthago-widgets' ),
+            'label' => esc_html__( 'Preselect values from URL', 'malibu-carthago-widgets' ),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
             'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),

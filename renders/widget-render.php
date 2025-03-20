@@ -24,6 +24,9 @@ function ___mcw__widget_render($widget){
             if( $settings['preselect_values_from_url'] === 'yes' ) {
                 echo 'preselect-values="yes"';
             }
+            if( $settings['preselect_current_value'] === 'yes' ) {
+                echo 'preselect-current-value="'.get_the_ID().'"';
+            }
         ?>
     >
 
