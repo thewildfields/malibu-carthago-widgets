@@ -17,7 +17,7 @@
         <?php if( $settings['display_address_field'] ) { ?>
 
             <input
-                class="---mcw--mcs__input"
+                class="---mcw--mcs__input placesAutocompleteInput"
                 widget-control="location"
                 id="autocomplete"
                 placeholder="<?php echo $settings['address_field_placeholder']; ?>"

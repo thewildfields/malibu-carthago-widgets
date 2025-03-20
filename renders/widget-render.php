@@ -14,7 +14,7 @@ function ___mcw__widget_render($widget){
 ?>
 
     <div
-        class="---mcw--mcs"
+        class="---mcw--mcs dealerSearch__filter"
         <?php
             if( $settings['results_target'] === 'different_page' ) {
                 echo 'target-url="'.get_permalink($settings['target_page']).'"';
@@ -49,7 +49,7 @@ function ___mcw__widget_render($widget){
             if( $settings['display_radius_field'] === 'yes' ){ ?>
 
                 <a
-                    class="---mcw--mcs__input ---mcw--mcs__searchButton"
+                    class="---mcw--mcs__input ---mcw--mcs__searchButton dealerSearch__filterSubmit"
                     href="<?php echo get_permalink( $settings['target_page'] ); ?>"
                     <?php if( $settings['open_in_new_tab'] === 'yes' ){ echo 'target="_blank"'; } ?>
                 >

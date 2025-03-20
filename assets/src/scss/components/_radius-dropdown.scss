@@ -1,7 +1,7 @@
 .---mcw--mcs__radius{
 
     position: relative;
-    flex: 0 0 80px;
+    flex: 0 0 100px;
     text-align: center;
     color: #000000;
 
@@ -25,10 +25,12 @@
 
     &__option{
 
-        padding: 10px 0;
-        background-color: white;
-        border: none;
-        cursor: pointer;
+        padding: 10px 0 !important;
+        background-color: #fff !important;
+        cursor: pointer !important;
+        border: none !important;
+        font-weight: 300 !important;
+        color: #000 !important;
 
         &:focus{
             background-color: inherit;

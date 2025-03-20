@@ -1,9 +1,6 @@
 import buildSearchURL from "./search-url-builder";
 import googleAPILoader from "./google-api";
 
-const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
-
-
 const placeChanged = (autocomplete, widget) => {
 
     const place = autocomplete.getPlace();
@@ -13,10 +10,12 @@ const placeChanged = (autocomplete, widget) => {
         return;
     }
 
-    console.log(place);
+    const legacyInput = widget.querySelector('.placesAutocompleteInput');
     widget.setAttribute( 'place', place.place_id );
     widget.setAttribute( 'lat', place.geometry.location.lat() );
     widget.setAttribute( 'lng', place.geometry.location.lng() );
+    legacyInput.setAttribute( 'selected-location-lat', place.geometry.location.lat() );
+    legacyInput.setAttribute( 'selected-location-lng', place.geometry.location.lng() );
 
     buildSearchURL(widget);
 
