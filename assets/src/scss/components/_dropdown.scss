@@ -1,0 +1,133 @@
+.---mcw--mcs__dropdown{
+
+    &Options{
+
+        display: none;
+        flex-direction: column;
+        max-height: 300px;
+        overflow: auto;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #000000;
+        margin-top: -1px;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+        background-color: white;
+
+        &_open{
+            display: flex;
+        }
+
+    }
+
+    &GroupTitle{
+        font-weight: 700;
+        font-size: 0.9325rem;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 10px;
+        margin: 0!important;
+        text-transform: capitalize;
+    }
+
+    &ChildrenGroup{
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+.---mcw--mcs__option{
+
+    &_dropdown{
+
+        display: flex!important;
+        background-color: white!important;
+        border-radius: 0!important;
+        border: none!important;
+        font-size: 0.9325rem!important;
+        padding-top: 5px!important;
+        padding-bottom: 5px!important;
+        padding-left: 10px!important;
+        padding-right: 10px!important;
+        cursor: pointer!important;
+        align-items: center!important;
+        gap: 5px!important;
+        color: black!important;
+        transition: none!important;
+        font-weight: 300!important;
+
+        input{
+            transform: translateY(-1px)!important;
+        }
+
+        &:focus{
+            outline: none!important;
+            border: none!important;
+        }
+
+        &:hover{
+            background-color: #f0f0f0!important;
+        }
+
+    }
+
+    &Value{
+
+        background-color: transparent!important;
+        border: none!important;
+        outline: none;
+        padding: 0!important;
+        font-weight: 300!important;
+
+        &:not(:last-child)::after{
+            content: ',';
+        }
+
+        &Container{
+            position: relative;
+            cursor: pointer;
+        }
+
+        &List{
+
+            display: flex;
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            border: none;
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 36px;
+            position: absolute;
+            top: 1px;
+            width: calc(100% - 2px);
+            left: 1px;
+            z-index: -1;
+            gap: 5px;
+
+            &::after{
+                content: '';
+                position: absolute;
+                width: 32px;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0), white 50%);
+                right: 0;
+            }
+
+        }
+
+    }
+
+}

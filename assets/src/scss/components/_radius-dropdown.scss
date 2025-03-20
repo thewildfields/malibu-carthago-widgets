@@ -1,0 +1,45 @@
+.---mcw--mcs__radius{
+
+    position: relative;
+    flex: 0 0 80px;
+    text-align: center;
+    color: #000000;
+
+    &__options{
+
+        display: none;
+        position: absolute;
+        z-index: 100;
+        flex-direction: column;
+        width: 100%;
+        border-color: #000000;
+        border-width: 1px;
+        border-top-width: 0;
+        border-style: solid;
+
+        &_open{
+            display: flex;    
+        }
+
+    }
+
+    &__option{
+
+        padding: 10px 0;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+
+        &:focus{
+            background-color: inherit;
+            border: none;
+            outline: none;
+        }
+
+        &:hover{
+            background-color: #f0f0f0;
+        }
+
+    }
+
+}
