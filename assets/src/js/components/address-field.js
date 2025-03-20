@@ -53,7 +53,7 @@ if( locationAutocompleteInputs ){
 
     for (let i = 0; i < locationAutocompleteInputs.length; i++) {
 
-        initAutocomplete(locationAutocompleteInputs[i])
+        // initAutocomplete(locationAutocompleteInputs[i])
 
     }
 

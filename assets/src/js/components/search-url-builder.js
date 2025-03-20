@@ -13,7 +13,7 @@ const buildSearchURL = (widget) => {
         }
     });
 
-    if( searchData.place && searchData.lat && searchData.lng && searchData.model){
+    if( searchData.lat && searchData.lng && searchData.model){
         button.setAttribute('disabled', false);
     } else {
         button.setAttribute('disabled', true);
@@ -25,6 +25,8 @@ const buildSearchURL = (widget) => {
         const url = `${targetURL}?${params.toString()}#dealers-map`;
         button.setAttribute('href', url);
 
+    } else {
+        button.removeAttribute('href');
     }
 
 };
