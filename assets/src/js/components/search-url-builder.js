@@ -22,7 +22,7 @@ const buildSearchURL = (widget) => {
     if( targetURL ){
 
         const params = new URLSearchParams(searchData);
-        const url = `${targetURL}?${params.toString()}`;
+        const url = `${targetURL}?${params.toString()}#dealers-map`;
         button.setAttribute('href', url);
 
     }
