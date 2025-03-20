@@ -7,7 +7,7 @@ function ___mcw__widget_render($widget){
 
     $settings = $widget->get_settings_for_display();
 
-    if( get_post_type() === 'fahrzeuge' && get_field('display_search_widget') ){
+    if( get_post_type() === 'fahrzeuge' && !get_field('display_search_widget') ){
         return;
     }
 
