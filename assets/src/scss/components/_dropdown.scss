@@ -21,6 +21,11 @@
             display: flex;
         }
 
+        &Group{
+            display: flex;
+            flex-direction: column;
+        }
+
     }
 
     &GroupTitle{

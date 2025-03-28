@@ -8,10 +8,12 @@ import buildSearchURL from './components/search-url-builder';
 
 import '../scss/widget-styles.scss';
 import validateWidget from './components/widget-validation';
+import toggleNeighborCountries from './components/neighbor-countries-toggle';
 
 const widgets = document.querySelectorAll('.---mcw--mcs');
 
 for (let i = 0; i < widgets.length; i++) {
     validateWidget(widgets[i]);
     buildSearchURL(widgets[i]);
+    toggleNeighborCountries();
 }

@@ -2,9 +2,9 @@ const buildSearchURL = (widget) => {
 
     const searchData = {};
 
-    const button = widget.querySelector('.---mcw--mcs__searchButton');
+    const button = widget.querySelector('[widget-control="search-button"]');
 
-    const searchParamsFromWidget = ['place','lat','lng','radius','model'];
+    const searchParamsFromWidget = ['place','radius','model', 'include-neighbor-countries'];
     const targetURL = widget.getAttribute('target-url');
 
     searchParamsFromWidget.forEach(parameter => {
@@ -13,7 +13,7 @@ const buildSearchURL = (widget) => {
         }
     });
 
-    if( searchData.lat && searchData.lng && searchData.model){
+    if( searchData.place && searchData.model){
         button.setAttribute('disabled', false);
     } else {
         button.setAttribute('disabled', true);

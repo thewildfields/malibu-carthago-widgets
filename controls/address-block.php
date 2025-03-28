@@ -156,6 +156,21 @@ function ___mcw__address_block_controls($widget) {
 			]
 		);
 
+        $widget->add_control(
+            'select_countries_toggle_by_default',
+            [
+                'label' => esc_html__( 'Select Neighboring countries by default', 'malibu-carthago-widgets' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
+                'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'condition' => [
+                    'display_countries_toggle' => 'yes'
+                ]
+            ]
+        );
+
     $widget->end_controls_section();
 
 }

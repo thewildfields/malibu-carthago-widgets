@@ -27,6 +27,7 @@
 
                 <a
                     class="---mcw--mcs__input ---mcw--mcs__searchButton"
+                    widget-control="search-button"
                     href="<?php echo get_permalink( $settings['target_page'] ); ?>"
                     <?php if( $settings['open_in_new_tab'] === 'yes' ){ echo 'target="_blank"'; } ?>
                 >
@@ -48,7 +49,15 @@
     <div class="---mcw--mcs__inputGroup ---mcw--mcs__inputGroup_horizontal">
 
         <?php if( $settings['display_countries_toggle'] ) { ?>
-            display countries toggle
+            <label for="---mccw--mcs--neighbor-countries-toggle">
+                <input
+                    type="checkbox"
+                    id="---mccw--mcs--neighbor-countries-toggle"
+                    widget-control="neighbor-countries-toggle"
+                    <?php if($settings['select_countries_toggle_by_default'] === 'yes'){ echo 'checked="true"';} ?>
+                >
+                    <?php echo $settings['countries_toggle_text']; ?>
+            </label>
         <?php } ?>
         
     </div>

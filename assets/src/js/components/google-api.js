@@ -1,6 +1,5 @@
 import { Loader } from "@googlemaps/js-api-loader";
-
-const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
+import { googleMapsApiKey } from "./variables";
 
 const googleAPILoader = new Loader({
     apiKey: googleMapsApiKey,

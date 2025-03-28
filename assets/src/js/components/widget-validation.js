@@ -1,4 +1,5 @@
 import googleAPILoader from "./google-api";
+import { attributes, selectors } from "./variables";
 
 const selectModel = (widget, model) => {
 
@@ -70,6 +71,11 @@ const validateWidget = async (widget) => {
             } catch (error) {
                 console.error(error)
             }
+        }
+
+        if(widget.getAttribute(attributes.neighborCountries) === 'true'){
+            const checkbox = widget.querySelector(selectors.neighborCountriesToggle);
+            checkbox.checked = true;
         }
 
         const radiusValueContainer = widget.querySelector('.---mcw--mcs__radiusValue');

@@ -1,6 +1,8 @@
 // Text Inputs
 
-const widgetTextFilterInputs = document.querySelectorAll('[widget-control="dropdown-input"]');
+import { selectors } from "./variables";
+
+const widgetTextFilterInputs = document.querySelectorAll(selectors.dropdownInput);
 
 for (let i = 0; i < widgetTextFilterInputs.length; i++) {
 
@@ -9,7 +11,7 @@ for (let i = 0; i < widgetTextFilterInputs.length; i++) {
     input.addEventListener('input', (e) => {
 
         const value = e.target.value.toLowerCase();
-        const widget = input.closest('.---mcw--mcs');
+        const widget = input.closest(selectors.widget);
 
         const inputFullKey = input.getAttribute('widget-control-key');
         const unselectedOptions = widget.querySelectorAll(`.---mcw--mcs__option[item-key="${inputFullKey}"]:not(.---mcw--mcs__option_selected)`);
@@ -24,8 +26,8 @@ for (let i = 0; i < widgetTextFilterInputs.length; i++) {
 
 document.addEventListener('click' , (e) => {
     if(
-        !e.target.closest('[widget-control="dropdown-input"]') &&
-        !e.target.closest('[widget-control="value-dropdown"]')
+        !e.target.closest(selectors.dropdownInput) &&
+        !e.target.closest(selectors.dropdownInput)
     ){
         widgetTextFilterInputs.forEach(input => {
             input.value = '';

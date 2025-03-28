@@ -1,52 +1,40 @@
-const radiusDropdownOptions = document.querySelectorAll('.---mcw--mcs__radius__option');
-const radiusDropdownValueContainers = document.querySelectorAll('.---mcw--mcs__radiusValue');
-const radiusOptionsContainerOpenClass = '---mcw--mcs__radius__options_open';
+import { attributes, classes, selectors } from "./variables";
 
+const radiusDropdownOptions = document.querySelectorAll(selectors.radiusOption);
+const radiusDropdownValueContainers = document.querySelectorAll(selectors.radiusValue);
 
 for (let i = 0; i < radiusDropdownOptions.length; i++) {
-
     const option = radiusDropdownOptions[i];
-
     option.addEventListener( 'click', (e) => {
-        
-        const widget = option.closest('.---mcw--mcs');
-        const valueDisplay = widget.querySelector('.---mcw--mcs__radiusValue');
-        const optionsContainer = widget.querySelector('.---mcw--mcs__radius__options');
-
-        const value = option.getAttribute('radius-value');
+        const widget = option.closest(selectors.widget);
+        const valueDisplay = widget.querySelector(selectors.radiusValue);
+        const optionsContainer = widget.querySelector(selectors.radiusOptions);
+        const value = option.getAttribute(attributes.radius);
         const label = option.textContent.trim();
-        
-        widget.setAttribute('radius', value);
+        widget.setAttribute(attributes.radius, value);
         valueDisplay.textContent = label;
-        optionsContainer.classList.remove(radiusOptionsContainerOpenClass)
-
+        optionsContainer.classList.remove(classes.radiusDropdownOpen)
     } );
-
 }
 
 
 for (let i = 0; i < radiusDropdownValueContainers.length; i++) {
-
     const valueContainer = radiusDropdownValueContainers[i];
-
     valueContainer.addEventListener('click', (e) => {
-
-        const widget = valueContainer.closest('.---mcw--mcs');
-        const optionsContainer = widget.querySelector('.---mcw--mcs__radius__options');
-
-        optionsContainer.classList.contains(radiusOptionsContainerOpenClass)
-            ? optionsContainer.classList.remove(radiusOptionsContainerOpenClass)
-            : optionsContainer.classList.add(radiusOptionsContainerOpenClass)
+        const widget = valueContainer.closest(selectors.widget);
+        const optionsContainer = widget.querySelector(selectors.radiusOptions);
+        optionsContainer.classList.contains(classes.radiusDropdownOpen)
+            ? optionsContainer.classList.remove(classes.radiusDropdownOpen)
+            : optionsContainer.classList.add(classes.radiusDropdownOpen)
 
     })
 }
 
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('.---mcw--mcs__radius') ){
-        const radiusDropdowns = document.querySelectorAll('.---mcw--mcs__radius__options');
-
+    if (!e.target.closest(selectors.widget) ){
+        const radiusDropdowns = document.querySelectorAll(selectors.radiusOptions);
         radiusDropdowns.forEach(dropdown => {
-            dropdown.classList.remove(radiusOptionsContainerOpenClass);
+            dropdown.classList.remove(classes.radiusDropdownOpen);
         })
     }
 })

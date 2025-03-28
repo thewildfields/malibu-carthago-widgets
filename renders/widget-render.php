@@ -15,6 +15,7 @@ function ___mcw__widget_render($widget){
 
     <div
         class="---mcw--mcs dealerSearch__filter"
+        widget-control="search-widget-container"
         <?php
             if( $settings['results_target'] === 'different_page' ) {
                 echo 'target-url="'.get_permalink($settings['target_page']).'"';
@@ -25,11 +26,23 @@ function ___mcw__widget_render($widget){
             if( $settings['display_radius_field'] !== 'yes' ) {
                 echo 'radius="'.$settings['default_radius'].'"';
             }
-            if( $settings['preselect_values_from_url'] === 'yes' ) {
+            if(
+                $settings['preselect_values_from_url'] === 'yes' &&
+                ( is_single('fahrzeuge') || is_tax('fahrzeugart') )
+            ) {
                 echo 'preselect-values="yes"';
             }
-            if( $settings['preselect_current_value'] === 'yes' ) {
+            if(
+                $settings['preselect_values_from_url'] === 'yes' &&
+                ( is_single('fahrzeuge') || is_tax('fahrzeugart') )
+            ) {
                 echo 'preselect-current-value="'.get_the_ID().'"';
+            }
+            if(
+                $settings['display_countries_toggle'] === 'yes' && 
+                $settings['select_countries_toggle_by_default'] === 'yes'
+            ) {
+                echo 'include-neighbor-countries="true"';
             }
         ?>
     >
@@ -50,6 +63,7 @@ function ___mcw__widget_render($widget){
 
                 <a
                     class="---mcw--mcs__input ---mcw--mcs__searchButton dealerSearch__filterSubmit"
+                    widget-control="search-button"
                     href="<?php echo get_permalink( $settings['target_page'] ); ?>"
                     <?php if( $settings['open_in_new_tab'] === 'yes' ){ echo 'target="_blank"'; } ?>
                 >

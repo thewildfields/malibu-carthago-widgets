@@ -4,7 +4,10 @@ function ___mcw__radius_dropdown($widget, $settings){
 
 ?>
     <div class="---mcw--mcs__radius">
-        <div class="---mcw--mcs__radiusValue ---mcw--mcs__input">
+        <div
+            class="---mcw--mcs__radiusValue ---mcw--mcs__input"
+            widget-control="radius-value"
+        >
             <?php 
                 $radiusOptions = $settings['radius_dropdown'];
                 for ($i=0; $i < sizeOf($radiusOptions); $i++) { 
@@ -14,11 +17,15 @@ function ___mcw__radius_dropdown($widget, $settings){
                 }
             ?>
         </div>
-        <div class="---mcw--mcs__radius__options">
+        <div
+            class="---mcw--mcs__radius__options"
+            widget-control="radius-options-container"
+        >
             <?php foreach ($settings['radius_dropdown'] as $option) { ?>
                 <button
                     class="---mcw--mcs__radius__option"
-                    radius-value="<?php echo $option['radius']; ?>"
+                    widget-control="radius-option"
+                    radius="<?php echo $option['radius']; ?>"
                 >
                     <?php echo $option['radius'].' km'; ?>
                 </button>

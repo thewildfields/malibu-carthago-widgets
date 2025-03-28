@@ -1,7 +1,7 @@
 <?php
 
     require_once ___MCW__PLUGIN_DIR_PATH . 'components/input-field.php';
-    require_once ___MCW__PLUGIN_DIR_PATH . 'components/dropdown-item.php';
+    require_once ___MCW__PLUGIN_DIR_PATH . 'components/dropdown-group.php';
 
     function ___mcw__render__dropdown_input_group($widget, $settings, $items){
 
@@ -20,7 +20,10 @@
         }
 
     ?>
-        <div class="---mcw--mcs__inputGroup_dropdown">
+        <div
+            class="---mcw--mcs__inputGroup_dropdown"
+            widget-control="dropdown-container"
+        >
             <div
                 class="---mcw--mcs__optionValueContainer"
             >
@@ -51,54 +54,17 @@
                         foreach ($termsArray as $term) {
 
                             if( $settings['show_term_hierarchy'] === 'yes' && !$term->parent ){
-                                
-                                echo '<p class="---mcw--mcs__dropdownGroupTitle">'.$term->name.'</p>';
-                                
-                                foreach ($items as $item) {
-                                    if( has_term( $term, $taxonomy, $item ) ) {
-                                        ___mcw__render_dropdown_input_group( $widget, $item, $parameter);
-                                    }
-                                }
 
-                                echo '<div class="---mcw--mcs__dropdownChildrenGroup">';
-                                
-                                foreach ($termsArray as $childTerm) { 
-                                    
-                                    if( $childTerm->parent === $term->term_id){
-                                
-                                        echo '<p class="---mcw--mcs__dropdownGroupTitle">'.$childTerm->name.'</p>';
-                                        
-                                        foreach ($items as $item) {
-                                            
-                                            if( has_term( $childTerm, $taxonomy, $item ) ) {
-                                                ___mcw__render_dropdown_input_group( $widget, $item, $parameter);
-                                            }
+                                ___mcw__render_dropdown_input_group($items, $taxonomy, $termsArray, $term, $widget, $parameter);
 
-                                        }
-
-                                    }
-
-                                }
-                                
-                                echo '</div>';
                             }
 
-                            if( $settings['show_term_hierarchy'] !== 'yes'){
-                                
-                                echo '<h2>'.$term->name.'</h2>';
-                                
-                                foreach ($items as $item) {
-                                    if( has_term( $term, $taxonomy, $item ) ) {
-                                        ___mcw__render_dropdown_input_group( $widget, $item, $parameter);
-                                    }
-                                }
-                            }
                         }
 
                     } else {
 
                         foreach ($items as $item) {
-                            ___mcw__render_dropdown_input_group( $widget, $item, $parameter);
+                            ___mcw__render_dropdown_item( $widget, $item, $parameter);
                         }
 
                     } ?>
