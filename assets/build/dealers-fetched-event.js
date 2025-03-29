@@ -1,1 +1,0 @@
-window.ElementorEventBus.addEventListener("dealersFetched",(e=>{const t=e.detail.items;console.log(t)}));

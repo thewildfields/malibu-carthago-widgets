@@ -43,14 +43,6 @@ function ___mcw__register_widget_scripts(){
 		true
 	);
 	
-	wp_register_script(
-		'---mcw--dealers-fetched-event',
-		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-fetched-event.js',
-		null,
-		null,
-		true
-	);
-	
 	wp_register_style(
 		'---mcw--widget-styles',
 		___MCW__PLUGIN_DIR_URL . 'assets/build/bundle.css',

@@ -28,6 +28,7 @@ const initMap = async ( mapContainer ) => {
         mapTypeControlOptions: {
             mapTypeIds: ["roadmap"]
         },
+        disableDefaultUI: true,
         center: mapCenter,
         zoom: 8,
     })

@@ -14,7 +14,7 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
     }
 
     public function get_script_depends(){
-        return ['---mcw--dealers-map', '---mcw--dealers-fetched-event'];
+        return ['---mcw--dealers-map'];
     }
 
     public function get_icon() {

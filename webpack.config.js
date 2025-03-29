@@ -10,7 +10,6 @@ module.exports = {
     entry: {
         'widget-scripts': '/assets/src/js/widget-scripts.js',
         'dealers-map': '/assets/src/js/dealers-map.js',
-        'dealers-fetched-event': '/assets/src/js/dealers-fetched-event.js',
     },
     output: {
         path: path.resolve( __dirname, 'assets/build' ),
