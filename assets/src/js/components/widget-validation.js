@@ -1,4 +1,6 @@
-import googleAPILoader from "./google-api";
+import buildQueryParams from "./build-query-params";
+import fetchDealers from "./fetch-dealers";
+import getPlaceData from "./get-place-data";
 import { attributes, selectors } from "./variables";
 
 const selectModel = (widget, model) => {
@@ -35,7 +37,10 @@ const selectModel = (widget, model) => {
 
 const validateWidget = async (widget) => {
 
-    const urlParams = new URLSearchParams(window.location.search);
+    const params = await buildQueryParams(widget, 'url');
+
+
+
 
     if( widget.getAttribute('preselect-current-value') ){
         const model = widget.getAttribute('preselect-current-value');
@@ -45,10 +50,10 @@ const validateWidget = async (widget) => {
     const preselectValuesFromURL = widget.getAttribute('preselect-values') === 'yes';
 
     if(preselectValuesFromURL){
-        
-        for( const parameter of urlParams ){
-            widget.setAttribute(parameter[0], parameter[1])
-        }
+
+        Object.keys(params).forEach( parameter => {
+            widget.setAttribute(parameter, params[parameter]);
+        })
 
         if( widget.getAttribute('model') ){
             const models = widget.getAttribute('model').split('+');
@@ -59,15 +64,11 @@ const validateWidget = async (widget) => {
 
         if( widget.getAttribute('place') ){
             try {
-
-                await googleAPILoader.importLibrary('geocoding');
-                const geocoder = new google.maps.Geocoder();
-                const placeData = await geocoder.geocode({placeId: widget.getAttribute('place')});
-                const placeName = placeData.results[0].formatted_address;
+                const placeData = await getPlaceData(params.place)
                 const addressInput = widget.querySelector('[widget-control="location"]');
-                addressInput.value = placeName;
-
-
+                addressInput.value = placeData.formatted_address;
+                widget.setAttribute('lat', placeData.geometry.location.lat());
+                widget.setAttribute('lng', placeData.geometry.location.lng());
             } catch (error) {
                 console.error(error)
             }
@@ -80,9 +81,11 @@ const validateWidget = async (widget) => {
 
         const radiusValueContainer = widget.querySelector('.---mcw--mcs__radiusValue');
 
-        if(radiusValueContainer && urlParams.get('radius') ){
-            radiusValueContainer.textContent = urlParams.get('radius') + ' km';
+        if(radiusValueContainer && params.radius ){
+            radiusValueContainer.textContent = params.radius + ' km';
         }
+
+        fetchDealers(params);
 
     }
 

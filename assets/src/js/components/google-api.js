@@ -4,7 +4,7 @@ import { googleMapsApiKey } from "./variables";
 const googleAPILoader = new Loader({
     apiKey: googleMapsApiKey,
     version: 'weekly',
-    libraries: ['places', 'geocoding'],
+    libraries: ['maps','places','geocoding','marker'],
 });
 
 export default googleAPILoader;

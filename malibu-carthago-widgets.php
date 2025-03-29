@@ -15,8 +15,10 @@ define( '___MCW__PLUGIN_DIR_URL' , plugin_dir_url(__FILE__) );
 function ___mcw__register_custom_elementor_widgets( $widgets_manager ) {
 
 	require_once ___MCW__PLUGIN_DIR_PATH . 'widgets/malibu-carthago-search-widget.php';
+	require_once ___MCW__PLUGIN_DIR_PATH . 'widgets/malibu-carthago-dealers-map.php';
 
 	$widgets_manager->register( new \Malibu_Carthago_Search_Widget() );
+	$widgets_manager->register( new \Malibu_Carthago_Dealers_Map() );
 
 }
 
@@ -34,8 +36,16 @@ function ___mcw__register_widget_scripts(){
 	);
 
 	wp_register_script(
-		'---mcw--google-api',
-		___MCW__PLUGIN_DIR_URL . 'assets/build/google-api.js',
+		'---mcw--dealers-map',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map.js',
+		null,
+		null,
+		true
+	);
+	
+	wp_register_script(
+		'---mcw--dealers-fetched-event',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-fetched-event.js',
 		null,
 		null,
 		true

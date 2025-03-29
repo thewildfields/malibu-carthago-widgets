@@ -1,6 +1,7 @@
 // Widget component selectors
 export const selectors = {
     widget: '[widget-control="search-widget-container"]',
+    searchButton: '[widget-control="search-button"]',
     // Location
     locationInput: '[widget-control="location"]',
     neighborCountriesToggle: '[widget-control="neighbor-countries-toggle"]',
@@ -11,6 +12,8 @@ export const selectors = {
     dropdownContainer: '[widget-control="dropdown-container"]',
     dropdownBlock: '[widget-control="values-dropdown"]',
     dropdownInput: '[widget-control="dropdown-input"]',
+    // Map
+    mapContainer: '[widget-control="dealers-map-container"]'
 }
 
 // Classes
@@ -27,3 +30,8 @@ export const attributes = {
 
 // API Keys
 export const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
+
+// API Endpoints
+export const endpoints = {
+    dealers: window.location.origin+'/wp-json/malibu-carthago/v1/dealers',
+}
