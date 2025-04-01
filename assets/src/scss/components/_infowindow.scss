@@ -1,0 +1,57 @@
+.gm-style-iw{
+
+    &-c{
+        padding: 0;
+        max-width: 350px!important;
+    }
+
+
+    &-chr{
+        position: absolute!important;
+        right: 0!important;
+    }
+
+}
+
+.---mcw--dm__infowindow{
+
+    padding: 20px 20px 0 5px;
+
+    &Text{
+        display: block;
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    &Title{
+        display: block;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    &Link{
+        display: block;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    &Categories{
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 5px;
+
+        &Item{
+            background-color: #a2a2a2;
+            color: white;
+            border-radius: 5px;
+            padding: 3px 5px;
+            font-size: 1rem;
+        }
+
+    }
+
+}

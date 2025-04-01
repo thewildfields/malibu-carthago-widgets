@@ -1,3 +1,5 @@
+import buildQueryParams from "./build-query-params";
+import fetchDealers from "./fetch-dealers";
 import getPlaceData from "./get-place-data";
 import googleAPILoader from "./google-api";
 import renderDealerMarker from "./render-dealer-marker";
@@ -33,12 +35,16 @@ const initMap = async ( mapContainer ) => {
         zoom: 8,
     })
 
+    const params = await buildQueryParams(null, 'url');
+
+    // const dealers = await fetchDealers(params);
 
     window.ElementorEventBus.addEventListener('dealersFetched', async (e) => {
         const bounds = new google.maps.LatLngBounds();
         markers.forEach(marker => marker.setMap(null));
         const dealersResponse = e.detail;
         const dealers = dealersResponse.items;
+        console.log(dealersResponse.items);
         dealers.forEach(dealer => {
             renderDealerMarker(dealer, map, bounds, markers);
         });

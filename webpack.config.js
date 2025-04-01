@@ -4,12 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     plugins: [
       new MiniCssExtractPlugin({
-        filename: "bundle.css",
+        filename: "[name].css",
       }),
     ],
     entry: {
-        'widget-scripts': '/assets/src/js/widget-scripts.js',
-        'dealers-map': '/assets/src/js/dealers-map.js',
+        'search-widget': '/assets/src/js/search-widget.js',
+        'dealers-map-widget': '/assets/src/js/dealers-map-widget.js',
     },
     output: {
         path: path.resolve( __dirname, 'assets/build' ),

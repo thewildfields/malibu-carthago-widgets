@@ -85,7 +85,7 @@ const validateWidget = async (widget) => {
             radiusValueContainer.textContent = params.radius + ' km';
         }
 
-        fetchDealers(params);
+        await fetchDealers(params);
 
     }
 

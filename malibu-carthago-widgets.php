@@ -28,24 +28,32 @@ add_action( 'elementor/widgets/register', '___mcw__register_custom_elementor_wid
 function ___mcw__register_widget_scripts(){
 
 	wp_register_script(
-		'---mcw--widget-scripts',
-		___MCW__PLUGIN_DIR_URL . 'assets/build/widget-scripts.js',
+		'---mcw--search-widget-scripts',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/search-widget.js',
 		null,
 		null,
 		true
 	);
 
 	wp_register_script(
-		'---mcw--dealers-map',
-		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map.js',
+		'---mcw--dealers-map-widget-scripts',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map-widget.js',
 		null,
 		null,
 		true
 	);
 	
 	wp_register_style(
-		'---mcw--widget-styles',
-		___MCW__PLUGIN_DIR_URL . 'assets/build/bundle.css',
+		'---mcw--search-widget-styles',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/search-widget.css',
+		null,
+		null,
+		'all'
+	);
+	
+	wp_register_style(
+		'---mcw--dealers-map-widget-styles',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map-widget.css',
 		null,
 		null,
 		'all'

@@ -22,11 +22,11 @@ class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_script_depends(){
-        return ['---mcw--widget-scripts'];
+        return ['---mcw--search-widget-scripts'];
     }
 
     public function get_style_depends(){
-        return ['---mcw--widget-styles'];
+        return ['---mcw--search-widget-styles'];
     }
 
     public function get_icon() {

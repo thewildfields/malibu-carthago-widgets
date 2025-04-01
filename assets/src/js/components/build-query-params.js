@@ -1,4 +1,4 @@
-const buildQueryParams = async (widget, source = 'widget') => {
+const buildQueryParams = async (widget = null, source = null) => {
 
     if( source !== 'widget' && source !== 'url'){
         console.error('buildQueryParams function called incorrectly');
@@ -10,7 +10,7 @@ const buildQueryParams = async (widget, source = 'widget') => {
 
     const allowedParameters = ['place','radius','model', 'include-neighbor-countries'];
 
-    if( source === 'widget' ){
+    if( widget && source === 'widget' ){
         allowedParameters.push('target-url', 'lat', 'lng');
         allowedParameters.forEach(parameter => {
             initialParams[parameter] = widget.getAttribute(parameter);

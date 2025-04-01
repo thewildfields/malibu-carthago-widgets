@@ -1,4 +1,6 @@
 import googleAPILoader from "./google-api";
+import renderInfowindow from "./render-infowindow";
+import { attributes } from "./variables";
 
 const renderDealerMarker = async (dealer, map, bounds, markers) => {
 
@@ -21,6 +23,11 @@ const renderDealerMarker = async (dealer, map, bounds, markers) => {
     map.fitBounds(bounds);
 
     markers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', () => {
+        renderInfowindow( dealer, marker )
+    });
+
 }
 
 export default renderDealerMarker;

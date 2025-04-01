@@ -1,3 +1,5 @@
+import renderInfowindow from "./render-infowindow";
+
 // Widget component selectors
 export const selectors = {
     widget: '[widget-control="search-widget-container"]',
@@ -19,13 +21,20 @@ export const selectors = {
 // Classes
 export const classes = {
     dropdownActive: '---mcw--mcs__dropdownOptions_open',
-    radiusDropdownOpen: '---mcw--mcs__radius__options_open'
+    radiusDropdownOpen: '---mcw--mcs__radius__options_open',
+    infowindow: '---mcw--dm__infowindow',
+    infowindowTitle: '---mcw--dm__infowindowTitle',
+    infowindowText: '---mcw--dm__infowindowText',
+    infowindowLink: '---mcw--dm__infowindowLink',
+    infowindowCategories: '---mcw--dm__infowindowCategories',
+    infowindowCategoryItem: '---mcw--dm__infowindowCategoriesItem',
 }
 
 // Attributes
 export const attributes = {
     neighborCountries: 'include-neighbor-countries',
-    radius: 'radius'
+    radius: 'radius',
+    showInfowindows: 'show-infowindows'
 }
 
 // API Keys
@@ -34,4 +43,13 @@ export const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
 // API Endpoints
 export const endpoints = {
     dealers: window.location.origin+'/wp-json/malibu-carthago/v1/dealers',
+}
+
+// Global vars
+
+export const infoWindowTracker = [];
+export const markers = [];
+
+export const closeAllInfoWindows = () => {
+    infoWindowTracker.forEach( window => window.close());
 }

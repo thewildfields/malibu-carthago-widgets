@@ -6,7 +6,7 @@ import './components/dropdown';
 import './components/radius-dropdown';
 import buildSearchURL from './components/search-url-builder';
 
-import '../scss/widget-styles.scss';
+import '../scss/search-widget-styles.scss';
 import validateWidget from './components/widget-validation';
 import toggleNeighborCountries from './components/neighbor-countries-toggle';
 import { selectors } from './components/variables';
@@ -30,5 +30,3 @@ for (let i = 0; i < searchWidgetSearchButtons.length; i++) {
         await initSearch(widget);
     })
 }
-
-window.ElementorEventBus = new EventTarget();
