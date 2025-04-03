@@ -8,7 +8,7 @@ const fetchDealers = async (params = {}, renderCards, map) => {
     try {
         let dealersResponse = await axios(endpoints.dealers, {params: params});
 
-        await dispatchDealersFetchedEvent(dealersResponse, renderCards, map);
+        const event = await dispatchDealersFetchedEvent(dealersResponse, renderCards, map);
 
     } catch (error) {
         console.error(error)

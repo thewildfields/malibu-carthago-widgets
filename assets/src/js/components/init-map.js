@@ -50,6 +50,8 @@ const initMap = async ( mapContainer ) => {
         await fetchDealers(params, true, map);
     }
 
+    return;
+
 }
 
 export default initMap;
