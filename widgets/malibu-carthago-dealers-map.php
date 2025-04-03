@@ -108,6 +108,7 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
             <div
                 class="<?php echo implode(' ', $mapClasses); ?>"
                 widget-control="dealers-map-container"
+                id="---mcw--dm"
                 <?php
                     if( $settings['preload_dealers'] === 'yes'){
                         echo 'preload-dealers ';

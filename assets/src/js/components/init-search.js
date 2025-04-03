@@ -1,15 +1,16 @@
-import { maps, selectors } from "./variables";
+import { getAllMaps, selectors } from "./variables";
 import buildQueryParams from "./build-query-params";
 import fetchDealers from "./fetch-dealers";
+import googleAPILoader from "./google-api";
 
 const initSearch = async (widget) => {
 
+    const map = window.mapsRegistry.get("---mcw--dm");
+
     const params = await buildQueryParams(widget, 'widget');
+    await googleAPILoader.importLibrary('maps');
 
     const searchResults = document.querySelectorAll(selectors.dealerCard);
-
-    console.log(searchResults);
-
 
     for (let i = 0; i < searchResults.length; i++) {
         console.log(searchResults[i]);
@@ -21,8 +22,7 @@ const initSearch = async (widget) => {
     } else if( !params.radius) {
         console.log('missing radius');
     } else {
-        // await fetchDealers(params, true);
-        console.log(maps);
+        await fetchDealers(params, true, map, true);
     }
 }
 

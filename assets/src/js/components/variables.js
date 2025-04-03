@@ -50,38 +50,22 @@ export const attributes = {
     showInfowindows: 'show-infowindows',
 }
 
-// API Keys
-export const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
-
 // API Endpoints
 export const endpoints = {
     dealers: window.location.origin+'/wp-json/malibu-carthago/v1/dealers',
 }
 
+// API Keys
+export const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
+
 // Global vars
-
-export const storage = {
-    maps: [],
-    infoWindowTracker: null,
-    markers: [],
-}
-
-export const updateMap = (map) => {
-    storage.maps.pop();
-    storage.maps.push(map);
-}
-
-export const getMap = () => {
-    return storage.maps[0];
-}
-
-export const maps = [];
 export const infoWindowTracker = [];
 export const markers = {};
 
 export const closeAllInfoWindows = () => {
     infoWindowTracker.forEach( window => window.close());
 }
+
 
 // Map Bounds
 

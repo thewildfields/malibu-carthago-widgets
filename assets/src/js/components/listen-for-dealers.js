@@ -1,6 +1,6 @@
 import renderDealerCard from "./render-dealer-card";
 import renderDealerMarker from "./render-dealer-marker";
-import { selectors } from "./variables";
+import { markers, selectors } from "./variables";
 
 const listenForDealers = async (method=null) => {
 
@@ -22,8 +22,16 @@ const listenForDealers = async (method=null) => {
                 return;
             }
 
+            if(Object.values(markers).length > 0){
+                Object.values(markers).forEach(marker => {
+                    marker.setMap(null);
+                });
+            }
+
+            const bounds = new google.maps.LatLngBounds();
+
             dealers.forEach( async dealer => {
-                renderDealerMarker(dealer, map);
+                await renderDealerMarker(dealer, map, bounds, e.detail.resize);
             });
         }
 
