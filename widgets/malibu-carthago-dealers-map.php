@@ -70,6 +70,9 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
             <div
                 class="<?php echo implode(' ', $mapClasses); ?>"
                 widget-control="dealers-map-container"
+                <?php if( $settings['language_based_zooms'] === 'yes' ) { ?>
+                    language-based-zooms
+                <?php } ?>
             >
                 <?php if( $settings['show_infowindows'] === 'yes' ) { ?>
                     <div class="---mcw--dm__infowindow">

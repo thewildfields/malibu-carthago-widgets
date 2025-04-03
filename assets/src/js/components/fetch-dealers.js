@@ -1,19 +1,14 @@
-import axios from 'axios';
 import { endpoints } from "./variables";
+import axios from 'axios';
+import dispatchDealersFetchedEvent from './dealers-fetched-event';
 
-window.ElementorEventBus = new EventTarget();
+const fetchDealers = async (params = {}, renderCards, map) => {
 
-const fetchDealers = async (params = {}) => {
-    console.log('fetching dealers');
     if( !Object.hasOwn(params, 'limit')){ params.limit = 5 }
     try {
-        const dealersResponse = await axios(endpoints.dealers, {params: params});
-        const dealers = dealersResponse.data;
+        let dealersResponse = await axios(endpoints.dealers, {params: params});
 
-        const event = new CustomEvent("dealersFetched", { detail: dealers });
-        window.ElementorEventBus.dispatchEvent(event);
-
-        console.log('dealers fetched in function');
+        await dispatchDealersFetchedEvent(dealersResponse, renderCards, map);
 
     } catch (error) {
         console.error(error)

@@ -1,12 +1,12 @@
-import infoWindowElement from "./infowindow";
 import { closeAllInfoWindows, infoWindowTracker } from "./variables";
+import infoWindowElement from "./infowindow";
 
 const renderInfowindow = async (dealer, marker) => {
     if(infoWindowTracker.length){
         closeAllInfoWindows();
     }
     const infoWindow = new google.maps.InfoWindow({
-        content:  infoWindowElement(dealer)
+        content: infoWindowElement(dealer)
     })
 
     

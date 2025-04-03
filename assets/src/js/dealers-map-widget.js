@@ -7,7 +7,6 @@ const maps = document.querySelectorAll(selectors.mapContainer);
 
 if( maps.length > 0 ){
     for (let i = 0; i < maps.length; i++) {
-        initMap(maps[i])
-        
+        await initMap(maps[i])
     }
 }

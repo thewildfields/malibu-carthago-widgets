@@ -1,0 +1,63 @@
+.---mcw--dc{
+
+    padding: 10px;
+    background-color: #F5F5F6;
+    border-radius: 4px;
+    padding: 20px;
+    cursor: pointer;
+
+    &:not(:last-child){
+        margin-bottom: 5px;
+    }
+
+    p{
+        margin: 0;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    &__distance{
+        font-size: 0.875rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    &__title{
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    &__city{
+        font-size: 1rem;
+        font-weight: 200;
+        margin-bottom: 15px;
+    }
+
+    &__categories{
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        &Item{
+            font-size: 0.75rem;
+            padding: 3px 5px;
+            color: #FFFFFF;
+            background-color: #939899;
+            line-height: 1;
+        }
+
+    }
+
+    &__modelsTitle{
+        font-size: 0.875rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    &__models{
+        font-size: 1rem;
+    }
+
+}

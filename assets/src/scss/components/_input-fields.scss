@@ -70,20 +70,11 @@
     border-color: #000000!important;
 
     &:hover{
-
-        &:not([disabled="true"]){
-            background-color: #FFFFFF!important;
-            color: #000000!important;
-            border-style: solid!important;
-            border-width: 1px!important;
-            border-color: #000000!important;
-        }
-
-    }
-
-    &[disabled="true"]{
-        opacity: 0.5!important;
-        cursor: not-allowed!important;
+        background-color: #FFFFFF!important;
+        color: #000000!important;
+        border-style: solid!important;
+        border-width: 1px!important;
+        border-color: #000000!important;
     }
 
 }

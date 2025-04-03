@@ -13,12 +13,6 @@ const buildSearchURL = (widget) => {
         }
     });
 
-    if( searchData.place && searchData.model){
-        button.setAttribute('disabled', false);
-    } else {
-        button.setAttribute('disabled', true);
-    }
-
     if( targetURL ){
 
         const params = new URLSearchParams(searchData);

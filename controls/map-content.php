@@ -25,7 +25,7 @@ function ___mcw__map_content_controls($widget){
 		$widget->add_control(
 			'language_based_zooms',
 			[
-				'label' => esc_html__( 'Base original location on zoom', 'textdomain' ),
+				'label' => esc_html__( 'Base original location on language', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Yes', 'textdomain' ),
 				'label_off' => esc_html__( 'No', 'textdomain' ),

@@ -1,0 +1,53 @@
+/*!****************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/scss/dealers-search-results-widget-styles.scss ***!
+  \****************************************************************************************************************************************************/
+.---mcw--dc {
+  padding: 10px;
+  background-color: #F5F5F6;
+  border-radius: 4px;
+  padding: 20px;
+  cursor: pointer;
+}
+.---mcw--dc:not(:last-child) {
+  margin-bottom: 5px;
+}
+.---mcw--dc p {
+  margin: 0;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.---mcw--dc__distance {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.---mcw--dc__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.---mcw--dc__city {
+  font-size: 1rem;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+.---mcw--dc__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.---mcw--dc__categoriesItem {
+  font-size: 0.75rem;
+  padding: 3px 5px;
+  color: #FFFFFF;
+  background-color: #939899;
+  line-height: 1;
+}
+.---mcw--dc__modelsTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.---mcw--dc__models {
+  font-size: 1rem;
+}

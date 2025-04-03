@@ -1,3 +1,5 @@
+import getPlaceData from "./get-place-data";
+
 const buildQueryParams = async (widget = null, source = null) => {
 
     if( source !== 'widget' && source !== 'url'){
@@ -28,17 +30,14 @@ const buildQueryParams = async (widget = null, source = null) => {
         const parameter = Object.keys(initialParams)[i];
         if( !allowedParameters.includes(parameter) ){ continue; }
         if( !initialParams[parameter] ){ continue; }
-        switch (parameter[0]) {
-            case 'place':
-                const location = await getPlaceData(initialParams[parameter], 'location');
-                queryObject.lat = location.lat;
-                queryObject.lng = location.lng;
-                break
-            default:
-                queryObject[parameter] = initialParams[parameter];
-                break;
-        }
-        
+        if( parameter === 'place' ){ continue; }
+        queryObject[parameter] = initialParams[parameter];
+    }
+
+    if( initialParams.place ){
+        const location = await getPlaceData(initialParams.place, 'location');
+        queryObject.lat = location.lat;
+        queryObject.lng = location.lng;
     }
 
     return(queryObject);

@@ -1,6 +1,6 @@
+import { selectors } from "./variables";
 import buildSearchURL from "./search-url-builder";
 import googleAPILoader from "./google-api";
-import { selectors } from "./variables";
 
 const locationAutocompleteInputs = document.querySelectorAll(selectors.locationInput);
 

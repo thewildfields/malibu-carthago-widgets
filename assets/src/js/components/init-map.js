@@ -1,19 +1,15 @@
+import adjustZoom from "./adjustZoom";
 import buildQueryParams from "./build-query-params";
+import defineBounds from "./defineBounds";
 import fetchDealers from "./fetch-dealers";
 import getPlaceData from "./get-place-data";
 import googleAPILoader from "./google-api";
-import renderDealerMarker from "./render-dealer-marker";
 
 const initMap = async ( mapContainer ) => {
 
-    const markers = [];
-
     const placeId = new URLSearchParams(window.location.search).get('place');
 
-    let mapCenter = {
-        lat: -34.397,
-        lng: 150.644
-    }
+    const langBasedZooms = mapContainer.hasAttribute('language-based-zooms');
 
     if(placeId){
         try{
@@ -31,25 +27,26 @@ const initMap = async ( mapContainer ) => {
             mapTypeIds: ["roadmap"]
         },
         disableDefaultUI: true,
-        center: mapCenter,
-        zoom: 8,
+        minZoom: 4,
+        maxZoom: 15 
     })
 
+
+    if(langBasedZooms){
+        const bounds = await defineBounds();
+        map.fitBounds(bounds);
+    }
+    
     const params = await buildQueryParams(null, 'url');
 
-    // const dealers = await fetchDealers(params);
-
-    window.ElementorEventBus.addEventListener('dealersFetched', async (e) => {
-        const bounds = new google.maps.LatLngBounds();
-        markers.forEach(marker => marker.setMap(null));
-        const dealersResponse = e.detail;
-        const dealers = dealersResponse.items;
-        console.log(dealersResponse.items);
-        dealers.forEach(dealer => {
-            renderDealerMarker(dealer, map, bounds, markers);
-        });
-    })
+    if( !Object.keys(params).length ){
+        params.limit = 0;
+        await fetchDealers(params, false, map);
+    } else {
+        await fetchDealers(params, true, map);
+    }
 
 }
 
 export default initMap;
+

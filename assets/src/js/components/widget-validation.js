@@ -1,7 +1,7 @@
+import { attributes, selectors } from "./variables";
 import buildQueryParams from "./build-query-params";
 import fetchDealers from "./fetch-dealers";
 import getPlaceData from "./get-place-data";
-import { attributes, selectors } from "./variables";
 
 const selectModel = (widget, model) => {
 
@@ -38,9 +38,6 @@ const selectModel = (widget, model) => {
 const validateWidget = async (widget) => {
 
     const params = await buildQueryParams(widget, 'url');
-
-
-
 
     if( widget.getAttribute('preselect-current-value') ){
         const model = widget.getAttribute('preselect-current-value');
@@ -83,9 +80,15 @@ const validateWidget = async (widget) => {
 
         if(radiusValueContainer && params.radius ){
             radiusValueContainer.textContent = params.radius + ' km';
+        } else {
+            const radiusDefaultValue = radiusValueContainer.textContent.trim();
+            widget.setAttribute('radius', radiusDefaultValue.slice(0, -3))
         }
 
-        await fetchDealers(params);
+        if(Object.values(params).length > 0 ){
+            // await fetchDealers(params);
+        }
+
 
     }
 

@@ -16,9 +16,11 @@ function ___mcw__register_custom_elementor_widgets( $widgets_manager ) {
 
 	require_once ___MCW__PLUGIN_DIR_PATH . 'widgets/malibu-carthago-search-widget.php';
 	require_once ___MCW__PLUGIN_DIR_PATH . 'widgets/malibu-carthago-dealers-map.php';
+	require_once ___MCW__PLUGIN_DIR_PATH . 'widgets/malibu-carthago-dealers-search-results.php';
 
 	$widgets_manager->register( new \Malibu_Carthago_Search_Widget() );
 	$widgets_manager->register( new \Malibu_Carthago_Dealers_Map() );
+	$widgets_manager->register( new \Malibu_Carthago_Dealers_Search_Results() );
 
 }
 
@@ -42,6 +44,14 @@ function ___mcw__register_widget_scripts(){
 		null,
 		true
 	);
+
+	wp_register_script(
+		'---mcw--dealers-search-results-widget-scripts',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-search-results-widget.js',
+		null,
+		null,
+		true
+	);
 	
 	wp_register_style(
 		'---mcw--search-widget-styles',
@@ -54,6 +64,14 @@ function ___mcw__register_widget_scripts(){
 	wp_register_style(
 		'---mcw--dealers-map-widget-styles',
 		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map-widget.css',
+		null,
+		null,
+		'all'
+	);
+	
+	wp_register_style(
+		'---mcw--dealers-search-results-widget-styles',
+		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-search-results-widget.css',
 		null,
 		null,
 		'all'
