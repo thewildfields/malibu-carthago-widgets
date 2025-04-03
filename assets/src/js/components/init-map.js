@@ -39,7 +39,11 @@ const initMap = async ( mapContainer ) => {
     
     const params = await buildQueryParams(null, 'url');
 
-    if( !Object.keys(params).length ){
+    if( mapContainer.getAttribute('tax-markers') ){
+        params.taxMarker = mapContainer.getAttribute('tax-markers');
+    }
+
+    if( !Object.keys(params).place ){
         params.limit = 0;
         await fetchDealers(params, false, map);
     } else {

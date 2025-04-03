@@ -119,7 +119,7 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
                         echo 'show-infowindows ';
                     }
                     if( $settings['marker_style'] === 'tax_icon'){
-                        echo 'tax-markers ';
+                        echo 'tax-markers="'.$settings['marker_taxonomy_icon'].'"';
                     }
                 ?>
             ></div>

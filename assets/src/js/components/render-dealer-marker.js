@@ -10,6 +10,9 @@ const renderDealerMarker = async (dealer, map) => {
         return;
     }
 
+
+
+
     const marker = new AdvancedMarkerElement({
         map,
         position: {
@@ -17,6 +20,16 @@ const renderDealerMarker = async (dealer, map) => {
             lng: dealer.location.lng,
         },
     })
+
+    if(dealer.tax_marker){
+        const markerPin = document.createElement('img');
+        markerPin.style.width = '35px';
+        markerPin.style.height = '35px';
+        markerPin.style.objectFit = 'contain';
+        markerPin.src = dealer.tax_marker;
+        marker.content = markerPin;
+    }
+
     markers[dealer.id] = marker;
 
     google.maps.event.addListener(marker, 'click', () => {
