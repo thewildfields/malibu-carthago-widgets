@@ -1,6 +1,6 @@
 import renderDealerCard from "./render-dealer-card";
 import renderDealerMarker from "./render-dealer-marker";
-import { globalMap, markers, selectors } from "./globals";
+import { selectors } from "./globals";
 
 const listenForDealers = async (method=null) => {
 
@@ -19,13 +19,12 @@ const listenForDealers = async (method=null) => {
 
             globalThis.appData.map = map;
 
-            // console.log(globalMap);
-
-
             if( !map ){
                 console.error('Map is not found');
                 return;
             }
+
+            const markers = globalThis.appData.markers;
 
             if(Object.values(markers).length > 0){
                 Object.values(markers).forEach(marker => {

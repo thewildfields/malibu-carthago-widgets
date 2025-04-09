@@ -32,7 +32,7 @@ const renderDealerMarker = async (dealer, map, bounds, resize) => {
         marker.content = markerPin;
     }
 
-    markers[dealer.id] = marker;
+    globalThis.appData.markers[dealer.id] = marker;
 
     google.maps.event.addListener(marker, 'click', () => {
         renderInfowindow( dealer, marker )

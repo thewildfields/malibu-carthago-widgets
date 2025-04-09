@@ -64,7 +64,6 @@ export const googleMapsApiKey = "AIzaSyBkzLO8lK3yXznfawhOc74Y-FMvGR84tVg";
 
 // Global vars
 export const infoWindowTracker = [];
-export const markers = {};
 
 export const closeAllInfoWindows = () => {
     infoWindowTracker.forEach( window => window.close());
@@ -105,4 +104,5 @@ export const getVehicleID = () => {
 }
 
 globalThis.appData = {
+    markers: {},
 }

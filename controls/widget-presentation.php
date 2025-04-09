@@ -14,25 +14,13 @@ function ___mcw__widget_presentation_controls($widget){
             'structure',
             [
                 'label' => esc_html__( 'Widget Structure', 'textdomain' ),
-                'type' => \Elementor\Controls_Manager::VISUAL_CHOICE,
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'label_block' => true,
                 'options' => [
-                    'top_no_radius' => [
-                        'title' => esc_attr__( 'Location at the top, no radius.', 'textdomain' ),
-                        'image' => plugins_url( 'assets/img/masonry.svg', __FILE__ ),
-                    ],
-                    'bottom_no_radius' => [
-                        'title' => esc_attr__( 'Location at the bottom, no radius.', 'textdomain' ),
-                        'image' => plugins_url( 'assets/img/grid-3.svg', __FILE__ ),
-                    ],
-                    'top_with_radius' => [
-                        'title' => esc_attr__( 'Location at the top with radius.', 'textdomain' ),
-                        'image' => plugins_url( 'assets/img/masonry.svg', __FILE__ ),
-                    ],
-                    'bottom_with_radius' => [
-                        'title' => esc_attr__( 'Location at the bottom with radius.', 'textdomain' ),
-                        'image' => plugins_url( 'assets/img/grid-3.svg', __FILE__ ),
-                    ],
+                    'top_no_radius' => esc_attr__( 'Location at the top, no radius.', 'textdomain' ),
+                    'bottom_no_radius' => esc_attr__( 'Location at the bottom, no radius.', 'textdomain' ),
+                    'top_with_radius' => esc_attr__( 'Location at the top with radius.', 'textdomain' ),
+                    'bottom_with_radius' => esc_attr__( 'Location at the bottom with radius.', 'textdomain' ),
                 ],
                 'default' => 'bottom_no_radius',
                 'columns' => 2,
