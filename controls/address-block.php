@@ -50,21 +50,6 @@ function ___mcw__address_block_controls($widget) {
 		);
 
         $widget->add_control(
-            'display_radius_field',
-            [
-                'label' => esc_html__( 'Radius Field', 'malibu-carthago-widgets' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Show', 'malibu-carthago-widgets' ),
-                'label_off' => esc_html__( 'Hide', 'malibu-carthago-widgets' ),
-                'return_value' => 'yes',
-                'default' => 'no',
-                'condition' => [
-                    'display_address_field' => 'yes'
-                ]
-            ]
-        );
-
-        $widget->add_control(
 			'default_radius',
 			[
 				'label' => esc_html__( 'Default Radius, km', 'malibu-carthago-widgets' ),
@@ -74,9 +59,9 @@ function ___mcw__address_block_controls($widget) {
                 'step' => 5,
 				'default' => 50,
                 'condition' => [
-                    'display_address_field' => 'yes',
-                    'display_radius_field!' => 'yes'
-                ]
+                    'structure!' => ['top_with_radius', 'bottom_with_radius']
+                ],
+                'frontend_available' => true,
 			]
 		);
 
@@ -124,9 +109,9 @@ function ___mcw__address_block_controls($widget) {
                 ],
 				'title_field' => '{{{ radius }}} km',
                 'condition' => [
-                    'display_address_field' => 'yes',
-                    'display_radius_field' => 'yes'
-                ]
+                    'structure' => ['top_with_radius', 'bottom_with_radius']
+                ],
+                'frontend_available' => true,
             ]
         );
 
@@ -139,6 +124,7 @@ function ___mcw__address_block_controls($widget) {
                 'label_off' => esc_html__( 'Hide', 'malibu-carthago-widgets' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
+                'frontend_available' => true,
             ]
         );
 
@@ -167,7 +153,8 @@ function ___mcw__address_block_controls($widget) {
                 'default' => 'no',
                 'condition' => [
                     'display_countries_toggle' => 'yes'
-                ]
+                ],
+                'frontend_available' => true,
             ]
         );
 

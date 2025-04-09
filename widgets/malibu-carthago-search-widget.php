@@ -4,12 +4,12 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/widget-search-results.php' );
-require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/widget-content.php' );
+require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/search-widget-content.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/widget-presentation.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/address-block.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/fields-style.php' );
 
-require_once ( ___MCW__PLUGIN_DIR_PATH . 'renders/widget-render.php' );
+require_once ( ___MCW__PLUGIN_DIR_PATH . 'renders/search-widget.php' );
 
 class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
 
@@ -22,7 +22,7 @@ class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_script_depends(){
-        return ['---mcw--search-widget-scripts'];
+        return ['---mcw--dealers-search-widget-scripts'];
     }
 
     public function get_style_depends(){
@@ -44,7 +44,7 @@ class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
     protected function register_controls() {
 
         ___mcw__widget_search_results($this);
-        ___mcw__widget_content_controls($this);
+        ___mcw__search_widget_content_controls($this);
         ___mcw__widget_presentation_controls($this);
         ___mcw__address_block_controls($this);
 
@@ -54,7 +54,7 @@ class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
 
     protected function render() {
 
-        ___mcw__widget_render($this);
+        ___mcw__search_widget_render($this);
 
     }
 

@@ -11,6 +11,36 @@ function ___mcw__widget_presentation_controls($widget){
     );
 
         $widget->add_control(
+            'structure',
+            [
+                'label' => esc_html__( 'Widget Structure', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::VISUAL_CHOICE,
+                'label_block' => true,
+                'options' => [
+                    'top_no_radius' => [
+                        'title' => esc_attr__( 'Location at the top, no radius.', 'textdomain' ),
+                        'image' => plugins_url( 'assets/img/masonry.svg', __FILE__ ),
+                    ],
+                    'bottom_no_radius' => [
+                        'title' => esc_attr__( 'Location at the bottom, no radius.', 'textdomain' ),
+                        'image' => plugins_url( 'assets/img/grid-3.svg', __FILE__ ),
+                    ],
+                    'top_with_radius' => [
+                        'title' => esc_attr__( 'Location at the top with radius.', 'textdomain' ),
+                        'image' => plugins_url( 'assets/img/masonry.svg', __FILE__ ),
+                    ],
+                    'bottom_with_radius' => [
+                        'title' => esc_attr__( 'Location at the bottom with radius.', 'textdomain' ),
+                        'image' => plugins_url( 'assets/img/grid-3.svg', __FILE__ ),
+                    ],
+                ],
+                'default' => 'bottom_no_radius',
+                'columns' => 2,
+                'frontend_available' => true
+            ]
+        );
+
+        $widget->add_control(
             'allow_multiple_selection',
 			[
 				'label' => esc_html__( 'Allow Multiple Selection', 'malibu-carthago-widgets' ),
@@ -19,6 +49,7 @@ function ___mcw__widget_presentation_controls($widget){
 				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+                'frontend_available' => true,
 			]
         );
 
@@ -49,6 +80,16 @@ function ___mcw__widget_presentation_controls($widget){
                     'widget_content!' => '',
                     'items_display' => 'dropdown'
                 ]
+            ]
+		);
+
+        $widget->add_control(
+			'search_button_text',
+			[
+				'label' => esc_html__( 'Search Button Text', 'malibu-carthago-widgets' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Search', 'malibu-carthago-widgets' ),
+				'placeholder' => esc_html__( 'Search', 'malibu-carthago-widgets' ),
             ]
 		);
 

@@ -2,8 +2,9 @@ import renderInfowindow from "./render-infowindow";
 
 // Widget component selectors
 export const selectors = {
-    widget: '[widget-control="search-widget-container"]',
+    searchWidget: '[widget-control="search-widget"]',
     searchButton: '[widget-control="search-button"]',
+    errorMessage: '[widget-control="error-message"]',
     // Location
     locationInput: '[widget-control="location"]',
     neighborCountriesToggle: '[widget-control="neighbor-countries-toggle"]',
@@ -14,6 +15,7 @@ export const selectors = {
     dropdownContainer: '[widget-control="dropdown-container"]',
     dropdownBlock: '[widget-control="values-dropdown"]',
     dropdownInput: '[widget-control="dropdown-input"]',
+    dropdownOption: '[widget-control="dropdown-option"]',
     // Map
     mapContainer: '[widget-control="dealers-map-container"]',
     // Dealers Search Results
@@ -30,7 +32,7 @@ export const classes = {
     infowindowTitle: '---mcw--dm__infowindowTitle',
     infowindowText: '---mcw--dm__infowindowText',
     infowindowLink: '---mcw--dm__infowindowLink',
-    infowindowCategories: '---mcw--dm__infowindowCategories',
+    infowindowCategories: '---mcw--dm__ihttps://malibu-carthago.ddev.site:9999/en/search-results/?radius=50#dealers-mapnfowindowCategories',
     infowindowCategoryItem: '---mcw--dm__infowindowCategoriesItem',
     // Dealer Cards
     dealerCard: '---mcw--dc',
@@ -41,11 +43,13 @@ export const classes = {
     dealerCardCategoryItem: '---mcw--dc__categoriesItem',
     dealerCardModelsTitle: '---mcw--dc__modelsTitle',
     dealerCardModels: '---mcw--dc__models',
+    // Inputs
+    widgetInput: '---mcw--mcs__input',
+    widgetInputError: '---mcw--mcs__input_error',
 }
 
 // Attributes
 export const attributes = {
-    neighborCountries: 'include-neighbor-countries',
     radius: 'radius',
     showInfowindows: 'show-infowindows',
 }
@@ -86,4 +90,19 @@ export const bounds = {
     de: [47.2701, 5.8663, 55.0584, 15.0419],
     // New countries can be added in the same format
     // countryCode: [south, west, north, east]
+}
+
+export const getVehicleID = () => {
+    const body = document.querySelector('body');
+    const bodyClasses = Array.from(body.classList);
+    const prefix = 'postid-';
+    if( bodyClasses.includes('single-fahrzeuge') ){
+        const id = bodyClasses.filter(bodyClass => bodyClass.indexOf(prefix) === 0)[0].slice(prefix.length);
+        return id;
+    } else {
+        return false;
+    }
+}
+
+globalThis.appData = {
 }

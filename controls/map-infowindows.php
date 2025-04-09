@@ -19,6 +19,7 @@ function ___mcw__map_infowindow_controls($widget){
 				'label_off' => esc_html__( 'No', 'textdomain' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+				'frontend_available' => true,
 			]
 		);
 

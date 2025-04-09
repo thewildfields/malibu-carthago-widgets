@@ -1,32 +1,32 @@
-import './components/search-text-inputs';
-import './components/search-options';
-import './components/selected-values';
-import './components/address-field';
-import './components/dropdown';
-import './components/radius-dropdown';
-import buildSearchURL from './components/search-url-builder';
-
 import '../scss/search-widget-styles.scss';
-import validateWidget from './components/widget-validation';
-import toggleNeighborCountries from './components/neighbor-countries-toggle';
-import { selectors } from './components/variables';
-import initSearch from './components/init-search';
+import formatSettings from './components/formatSettings';
+import { selectors } from './components/globals';
+import initItemsDropdown from './components/initItemsDropdown';
+import initItemSelection from './components/initItemSelection';
+import initRadiusDropdown from './components/initRadiusDropdown';
+import initSearch from './components/initSearch';
+import toggleNeighborCountries from './components/toggleNeighborCountries';
+import validateWidget from './components/validateWidget';
 
-const widgets = document.querySelectorAll(selectors.widget);
 
-for (let i = 0; i < widgets.length; i++) {
-    validateWidget(widgets[i]);
-    buildSearchURL(widgets[i]);
-    toggleNeighborCountries();
-}
+window.addEventListener( 'elementor/frontend/init', () => {
 
-const searchWidgetSearchButtons = document.querySelectorAll(selectors.searchButton);
+	elementorFrontend.hooks.addAction( 'frontend/element_ready/malibu_carthago_search.default', (scope) => {
+        const widgetContainer = scope[0];
+        const widget = widgetContainer.querySelector(selectors.searchWidget);
+        const settings = formatSettings(scope.data('settings'));
 
-for (let i = 0; i < searchWidgetSearchButtons.length; i++) {
-    const button = searchWidgetSearchButtons[i];
+        validateWidget(widget, settings);
+        initRadiusDropdown(widget, settings);
+        initItemsDropdown();
+        initItemSelection(widget, settings);
+        toggleNeighborCountries(widget);
 
-    button.addEventListener('click', async (e) => {
-        const widget = button.closest(selectors.widget);
-        await initSearch(widget);
-    })
-}
+        const searchButton = widget.querySelector(selectors.searchButton);
+
+        searchButton.addEventListener('click' , (e) => {
+            e.preventDefault();
+            initSearch(widget, settings);
+        })
+    } );
+} ); 

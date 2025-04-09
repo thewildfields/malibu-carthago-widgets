@@ -9,7 +9,7 @@ function ___mcw__widget_search_results($widget) {
 
     function ___mcw__filter_pages_list($posts) {
         return array_reduce($posts, function($carry, $post) {
-            $carry[$post->ID] = $post->post_title;
+            $carry[get_the_permalink($post->ID)] = $post->post_title;
             return $carry;
         }, []);
     }
@@ -33,7 +33,8 @@ function ___mcw__widget_search_results($widget) {
                 'different_page' => esc_html__( 'Different page', 'malibu-carthago-widgets' ),
                 'current_page' => esc_html__( 'Current page', 'malibu-carthago-widgets' ),
             ],
-            'default' => 'different_page'
+            'default' => 'different_page',
+            'frontend_available' => true
         ]
     );
 
@@ -46,7 +47,8 @@ function ___mcw__widget_search_results($widget) {
             'multiple' => false,
             'condition' => [
                 'results_target' => 'different_page'
-            ]
+            ],
+            'frontend_available' => true
         ]
     );
 
@@ -61,7 +63,8 @@ function ___mcw__widget_search_results($widget) {
             'default' => 'no',
             'condition' => [
                 'results_target' => 'different_page'
-            ]
+            ],
+            'frontend_available' => true
         ]
     );
 
@@ -69,11 +72,13 @@ function ___mcw__widget_search_results($widget) {
         'preselect_current_value',
         [
             'label' => esc_html__( 'Preselect current vehicle', 'malibu-carthago-widgets' ),
+            'description' => esc_html__('Only works on single vehicle page or Fahrzeugart term pages', 'malibu-carthago-widgets'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
             'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
             'return_value' => 'yes',
             'default' => 'yes',
+            'frontend_available' => true,
         ]
     );
 
@@ -86,6 +91,7 @@ function ___mcw__widget_search_results($widget) {
             'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
             'return_value' => 'yes',
             'default' => 'yes',
+            'frontend_available' => true,
         ]
     );
 

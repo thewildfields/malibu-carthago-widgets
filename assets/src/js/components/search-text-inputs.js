@@ -1,6 +1,6 @@
 // Text Inputs
 
-import { selectors } from "./variables";
+import { selectors } from "./globals";
 
 const widgetTextFilterInputs = document.querySelectorAll(selectors.dropdownInput);
 
@@ -11,7 +11,7 @@ for (let i = 0; i < widgetTextFilterInputs.length; i++) {
     input.addEventListener('input', (e) => {
 
         const value = e.target.value.toLowerCase();
-        const widget = input.closest(selectors.widget);
+        const widget = input.closest(selectors.searchWidget);
 
         const inputFullKey = input.getAttribute('widget-control-key');
         const unselectedOptions = widget.querySelectorAll(`.---mcw--mcs__option[item-key="${inputFullKey}"]:not(.---mcw--mcs__option_selected)`);

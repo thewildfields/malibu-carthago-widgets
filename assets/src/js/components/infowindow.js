@@ -1,4 +1,4 @@
-import { classes } from "./variables";
+import { classes } from "./globals";
 
 const renderText = (text, type='regular', content=null) => {
 

@@ -11,6 +11,7 @@ module.exports = {
         'search-widget': '/assets/src/js/search-widget.js',
         'dealers-map-widget': '/assets/src/js/dealers-map-widget.js',
         'dealers-search-results-widget': '/assets/src/js/dealers-search-results-widget.js',
+        'widgets-init': '/assets/src/js/widgets-init.js',
     },
     output: {
         path: path.resolve( __dirname, 'assets/build' ),

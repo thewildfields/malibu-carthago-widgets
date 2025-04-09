@@ -1,13 +1,15 @@
-import buildQueryParams from "./build-query-params";
+import buildQueryParams from "./buildQueryParams";
 import defineBounds from "./defineBounds";
-import fetchDealers from "./fetch-dealers";
 import getPlaceData from "./get-place-data";
 import googleAPILoader from "./google-api";
+import fetchDealers from './fetchDealers';
+import listenForDealers from "./listen-for-dealers";
 
+const initMap = async (mapContainer) => {
 
-    window.mapsRegistry = new Map();
+    await listenForDealers('markers')
 
-const initMap = async ( mapContainer ) => {
+    let mapCenter;
 
     const placeId = new URLSearchParams(window.location.search).get('place');
 
@@ -38,24 +40,19 @@ const initMap = async ( mapContainer ) => {
         map.fitBounds(bounds);
     }
     
-    const params = await buildQueryParams(null, 'url');
+    const params = await buildQueryParams(mapContainer, 'url');
 
     if( mapContainer.getAttribute('tax-markers') ){
         params.taxMarker = mapContainer.getAttribute('tax-markers');
     }
-    
-    window.mapsRegistry.set('---mcw--dm', map);
 
-    if( !Object.keys(params).place ){
+    if( !Object.hasOwn(params, 'place') ){
         params.limit = 0;
         await fetchDealers(params, false, map, false);
     } else {
         await fetchDealers(params, true, map, true);
     }
 
-    return;
-
 }
 
 export default initMap;
-

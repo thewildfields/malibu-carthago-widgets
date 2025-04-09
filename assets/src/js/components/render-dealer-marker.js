@@ -1,4 +1,4 @@
-import { attributes, map, mapData, markers, selectors } from "./variables";
+import { attributes, map, mapData, markers, selectors } from "./globals";
 import googleAPILoader from "./google-api";
 import renderInfowindow from "./render-infowindow";
 

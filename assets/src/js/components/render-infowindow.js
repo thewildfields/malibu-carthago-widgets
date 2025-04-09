@@ -1,4 +1,4 @@
-import { closeAllInfoWindows, infoWindowTracker } from "./variables";
+import { closeAllInfoWindows, infoWindowTracker } from "./globals";
 import infoWindowElement from "./infowindow";
 
 const renderInfowindow = async (dealer, marker) => {

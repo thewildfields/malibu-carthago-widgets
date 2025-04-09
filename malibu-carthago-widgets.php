@@ -30,9 +30,9 @@ add_action( 'elementor/widgets/register', '___mcw__register_custom_elementor_wid
 function ___mcw__register_widget_scripts(){
 
 	wp_register_script(
-		'---mcw--search-widget-scripts',
+		'---mcw--dealers-search-widget-scripts',
 		___MCW__PLUGIN_DIR_URL . 'assets/build/search-widget.js',
-		null,
+		[],
 		null,
 		true
 	);
@@ -40,7 +40,7 @@ function ___mcw__register_widget_scripts(){
 	wp_register_script(
 		'---mcw--dealers-map-widget-scripts',
 		___MCW__PLUGIN_DIR_URL . 'assets/build/dealers-map-widget.js',
-		null,
+		[],
 		null,
 		true
 	);

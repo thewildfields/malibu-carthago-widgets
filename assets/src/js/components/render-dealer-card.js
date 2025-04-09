@@ -1,4 +1,4 @@
-import { classes, getMap, selectors, storage } from "./variables";
+import { classes, getMap, selectors, storage } from "./globals";
 
 const renderDealerCard = (widget, dealer) => {
 

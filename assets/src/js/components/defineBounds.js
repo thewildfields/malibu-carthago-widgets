@@ -1,5 +1,5 @@
 import googleAPILoader from "./google-api";
-import { bounds } from "./variables";
+import { bounds } from "./globals";
 
 await googleAPILoader.importLibrary('maps');
 

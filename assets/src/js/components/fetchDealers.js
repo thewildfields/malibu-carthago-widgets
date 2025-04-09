@@ -1,4 +1,4 @@
-import { endpoints } from "./variables";
+import { endpoints } from "./globals";
 import axios from 'axios';
 import dispatchDealersFetchedEvent from './dealers-fetched-event';
 
