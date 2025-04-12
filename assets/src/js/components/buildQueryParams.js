@@ -1,4 +1,5 @@
 import getPlaceData from "./get-place-data";
+import { selectors } from "./globals";
 
 const buildQueryParams = async (widget = null, source = null) => {
 
@@ -10,10 +11,9 @@ const buildQueryParams = async (widget = null, source = null) => {
     const initialParams = {};
     const queryObject = {};
 
-    const allowedParameters = ['place','radius','model', 'includeNeighbors'];
+    const allowedParameters = ['place','radius','model', 'includeNeighbors', 'dealerName', 'widgetType'];
 
     if( widget && source === 'widget' ){
-        // allowedParameters.push('target-url');
         allowedParameters.forEach(parameter => {
             initialParams[parameter] = widget.getAttribute(parameter);
         });
@@ -35,6 +35,10 @@ const buildQueryParams = async (widget = null, source = null) => {
 
     if(initialParams.place){
         const placeData = await getPlaceData(initialParams.place);
+        if(placeData.address_components){
+            const country = placeData.address_components.filter(component => component.types.includes('country'));
+            queryObject.countryCode = country[0].short_name.toLowerCase();
+        }
         if(placeData.geometry){
             queryObject.lat = placeData.geometry.location.lat();
             queryObject.lng = placeData.geometry.location.lng();
@@ -42,6 +46,10 @@ const buildQueryParams = async (widget = null, source = null) => {
             console.error("location error");
             return;
         }
+    }
+
+    if(initialParams.includeNeighbors && initialParams.includeNeighbors === 'true'){
+        queryObject.includeNeighbors = true;
     }
 
     return(queryObject);

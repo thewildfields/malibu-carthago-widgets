@@ -1,8 +1,10 @@
-import { attributes, map, mapData, markers, selectors } from "./globals";
+import { selectors } from "./globals";
 import googleAPILoader from "./google-api";
 import renderInfowindow from "./render-infowindow";
 
 const renderDealerMarker = async (dealer, map, bounds, resize) => {
+
+    console.log(dealer);
     
     const { AdvancedMarkerElement } = await googleAPILoader.importLibrary('marker');
     if ( !dealer.location.lat || !dealer.location.lng ){
@@ -32,25 +34,28 @@ const renderDealerMarker = async (dealer, map, bounds, resize) => {
         marker.content = markerPin;
     }
 
-    globalThis.appData.markers[dealer.id] = marker;
-
     google.maps.event.addListener(marker, 'click', () => {
         renderInfowindow( dealer, marker )
     });
 
     const dealerCard = document.querySelector(`${selectors.dealerCard}[dealer-id="${dealer.id}"]`);
 
-    if( !dealerCard ){ return; }
+    if( dealerCard ){
     
-    const widget = dealerCard.closest(selectors.dealerCardsContainer);
-
-    if(widget && widget.hasAttribute('open-infowindow-on-click')){
-
-        dealerCard.addEventListener('click', () => {
-            renderInfowindow(dealer, marker);
-        })
+        const widget = dealerCard.closest(selectors.dealerCardsContainer);
+    
+        if(widget && widget.hasAttribute('open-infowindow-on-click')){
+    
+            dealerCard.addEventListener('click', () => {
+                renderInfowindow(dealer, marker);
+            })
+    
+        }
 
     }
+
+
+    return marker;
 
 }
 

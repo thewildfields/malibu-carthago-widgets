@@ -22,17 +22,17 @@ const initSearch = async (widget, settings) => {
         return;
     }
 
-    const checkboxes = widget.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
-
     if( settings.results_target === 'different_page' ){
         const searchParams = new URLSearchParams(params);
         const url = settings.target_page + '?' + searchParams.toString();
         window.open(url, settings.open_in_new_tab ? '_blank' : '_self' );
     } else if( settings.results_target === 'current_page' ){
         const map = globalThis.appData?.map;
+        const markers = globalThis.appData?.markers;
+        Object.keys(markers).forEach(key => {
+            markers[key].setMap(null);
+            delete markers[key];
+        })
         await fetchDealers(params, true, map, true);
     }
 

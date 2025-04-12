@@ -23,6 +23,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 'options' => [
                     '' => __('Select Content Type', 'malibu-carthago-widgets'),
                     'fahrzeuge' => __('Vehicles', 'malibu-carthago-widgets'),
+                    'haendler' => __('Dealers', 'malibu-carthago-widgets'),
                 ],
                 'default' => __('fahrzeuge', 'malibu-carthago-widgets'),
             ]
@@ -40,7 +41,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 ],
                 'default' => 'all',
                 'condition' => [
-                    'widget_content!' => '',
+                    'widget_content' => 'fahrzeuge',
                 ]
             ]
         );
@@ -87,6 +88,9 @@ function ___mcw__search_widget_content_controls($widget) {
 				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+                'condition' => [
+                    'widget_content' => 'fahrzeuge',
+                ]
 			]
         );
 
@@ -101,7 +105,37 @@ function ___mcw__search_widget_content_controls($widget) {
 				'default' => 'yes',
                 'description' => esc_html__( 'Only works for hierarchical taxonomies'),
                 'condition' => [
+                    'widget_content' => 'fahrzeuge',
                     'group_items_by_terms' => 'yes'
+                ]
+			]
+        );
+
+        $widget->add_control(
+            'enable_additional_taxonomy_filter',
+			[
+				'label' => esc_html__( 'Add primary taxonomy switcher', 'malibu-carthago-widgets' ),
+                'description' => esc_html__( 'Top level Vehicle type for Vehicles, Dealer Service for dealers'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
+				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+        );
+
+        $widget->add_control(
+            'additional_taxonomy_filter_type',
+			[
+				'label' => esc_html__( 'Add primary taxonomy switcher', 'malibu-carthago-widgets' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'radio' => esc_html__( 'Radio Buttons', 'malibu-carthago-widgets' ),
+                    'checkbox' => esc_html__( 'Checkboxes', 'malibu-carthago-widgets' )
+                ],
+				'default' => 'radio',
+                'condition' => [
+                    'enable_additional_taxonomy_filter' => 'yes'
                 ]
 			]
         );
@@ -115,10 +149,10 @@ function ___mcw__search_widget_content_controls($widget) {
 				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
-                'description' => esc_html__( 'Only works for hierarchical taxonomies'),
+                'description' => esc_html__( 'The search will not work without this parameters included'),
 			]
         );
-
+ 
         $widget->add_control(
             'required_search_parameters',
             [

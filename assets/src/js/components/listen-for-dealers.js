@@ -8,14 +8,20 @@ const listenForDealers = async (method=null) => {
 
         const dealers = e.detail.dealersResponse.items;
 
-        if (!dealers || !dealers.length){
+        if (!dealers){
             console.error('Error dispatching dealers fetched event');
+            return;
+        }
+
+        if( dealers.length === 0){
+            console.error('No dealers found')
             return;
         }
 
         if( method === 'markers' || method.includes('markers') ){
 
             const map = e.detail.map;
+            let newMarkers = {};
 
             globalThis.appData.map = map;
 
@@ -24,20 +30,20 @@ const listenForDealers = async (method=null) => {
                 return;
             }
 
-            const markers = globalThis.appData.markers;
-
-            if(Object.values(markers).length > 0){
-                Object.values(markers).forEach(marker => {
-                    marker.setMap(null);
-                });
-            }
-
             const bounds = new google.maps.LatLngBounds();
 
+
             dealers.forEach( async dealer => {
-                await renderDealerMarker(dealer, map, bounds, e.detail.resize);
+                const newMarker = await renderDealerMarker(dealer, map, bounds, e.detail.resize);
+                newMarkers[dealer.id] = newMarker;
             });
+
+            setTimeout(() => {
+                globalThis.appData.markers = newMarkers;
+            }, 100);
+
         }
+
 
         if( e.detail.renderCards && ( method === 'cards' || method.includes('cards')) ){
 
@@ -51,7 +57,6 @@ const listenForDealers = async (method=null) => {
             for (let i = 0; i < searchResultsWidgets.length; i++) {
                 const resultsWidget = searchResultsWidgets[i];
                 resultsWidget.innerHTML = '';
-                // console.log(resultsWidget)
                 dealers.forEach(async (dealer) => {
                     renderDealerCard(resultsWidget, dealer);
                 });

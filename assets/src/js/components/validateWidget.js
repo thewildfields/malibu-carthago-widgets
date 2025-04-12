@@ -85,9 +85,6 @@ const validateWidget = async (widget, settings) => {
     // Location Inputs
     initAutocomplete(widget);
 
-
-    // console.log('widget validated');
-
 }
 
 export default validateWidget;

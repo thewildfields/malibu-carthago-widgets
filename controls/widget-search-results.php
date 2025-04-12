@@ -1,18 +1,18 @@
 <?php 
 
+function ___mcw__filter_pages_list($posts) {
+    return array_reduce($posts, function($carry, $post) {
+        $carry[get_the_permalink($post->ID)] = $post->post_title;
+        return $carry;
+    }, []);
+}
+
 function ___mcw__widget_search_results($widget) {
 
     $pagesQuery = new WP_Query(array(
         'post_type' => 'page',
         'posts_per_page' => -1
     ));
-
-    function ___mcw__filter_pages_list($posts) {
-        return array_reduce($posts, function($carry, $post) {
-            $carry[get_the_permalink($post->ID)] = $post->post_title;
-            return $carry;
-        }, []);
-    }
 
     $pages = ___mcw__filter_pages_list($pagesQuery->posts);
 
@@ -79,6 +79,9 @@ function ___mcw__widget_search_results($widget) {
             'return_value' => 'yes',
             'default' => 'yes',
             'frontend_available' => true,
+            'condition' => [
+                'widget_content' => 'fahrzeuge'
+            ],
         ]
     );
 

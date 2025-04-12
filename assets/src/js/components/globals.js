@@ -5,12 +5,14 @@ export const selectors = {
     searchWidget: '[widget-control="search-widget"]',
     searchButton: '[widget-control="search-button"]',
     errorMessage: '[widget-control="error-message"]',
+    additionalInputs: '[widget-control="additional-input"]',
     // Location
     locationInput: '[widget-control="location"]',
     neighborCountriesToggle: '[widget-control="neighbor-countries-toggle"]',
     radiusOptions: '[widget-control="radius-options-container"]',
     radiusOption: '[widget-control="radius-option"]',
     radiusValue: '[widget-control="radius-value"]',
+    textInput: '[widget-control="text-filter-input"]',
     // Dropdown
     dropdownContainer: '[widget-control="dropdown-container"]',
     dropdownBlock: '[widget-control="values-dropdown"]',
@@ -32,7 +34,7 @@ export const classes = {
     infowindowTitle: '---mcw--dm__infowindowTitle',
     infowindowText: '---mcw--dm__infowindowText',
     infowindowLink: '---mcw--dm__infowindowLink',
-    infowindowCategories: '---mcw--dm__ihttps://malibu-carthago.ddev.site:9999/en/search-results/?radius=50#dealers-mapnfowindowCategories',
+    infowindowCategories: '---mcw--dm__i',
     infowindowCategoryItem: '---mcw--dm__infowindowCategoriesItem',
     // Dealer Cards
     dealerCard: '---mcw--dc',

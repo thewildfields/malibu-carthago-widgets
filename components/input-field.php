@@ -1,17 +1,17 @@
 <?php 
 
-function ___mcw__render__input_field($widget, $items){
+function ___mcw__render__input_field($widget, $control, $type=null){
     
 ?>
 
-    <div class="---mcw--mcs__inputGroup ---mcw--mcs__inputGroup_nomargin">
+    <div class="---mcw--mcs__inputGroup">
 
         <input
             type="text"
             class="---mcw--mcs__input"
             widget-control="text-filter-input"
-            dropdown-opener
-            widget-control-key="<?php echo $widget->get_id().'-'.$items[0]->post_type; ?>"
+            <?php echo $type; ?>
+            widget-control-key="<?php echo $widget->get_id().'-'.$control; ?>"
         >
 
     </div>

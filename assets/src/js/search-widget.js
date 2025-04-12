@@ -7,6 +7,8 @@ import initRadiusDropdown from './components/initRadiusDropdown';
 import initSearch from './components/initSearch';
 import toggleNeighborCountries from './components/toggleNeighborCountries';
 import validateWidget from './components/validateWidget';
+import initInputFields from './components/initInputFields';
+import initAdditionalInputs from './components/initAdditionalInputs';
 
 
 window.addEventListener( 'elementor/frontend/init', () => {
@@ -19,8 +21,10 @@ window.addEventListener( 'elementor/frontend/init', () => {
         validateWidget(widget, settings);
         initRadiusDropdown(widget, settings);
         initItemsDropdown();
+        initInputFields(widget);
         initItemSelection(widget, settings);
         toggleNeighborCountries(widget);
+        initAdditionalInputs(widget);
 
         const searchButton = widget.querySelector(selectors.searchButton);
 
