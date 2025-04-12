@@ -65,7 +65,7 @@ function ___mcw__render_items_list($widget, $settings){
     }
 
     if( $widgetContent === 'haendler' ){
-        ___mcw__render__input_field($widget, 'dealerName',);
+        ___mcw__render__input_field($widget, 'dealerName');
     }
 
 }

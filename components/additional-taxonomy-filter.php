@@ -13,7 +13,18 @@ function ___mcw__additional_taxonomy_filter($widget, $settings){
 
     switch ($settings['widget_content']) {
         case 'fahrzeuge':
-            $terms = get_terms('fahrzeugart', array('parent' => 0));
+            $preterms = get_terms([
+                'taxonomy' => 'fahrzeugart',
+                'parent' => 0,
+            ]);
+            
+            $terms = array_filter($terms, function($term) {
+                return get_terms([
+                    'taxonomy' => 'fahrzeugart',
+                    'parent' => $term->term_id,
+                    'number' => 1,
+                ]);
+            });
         break;
         case 'haendler':
             $terms = get_terms('haendlertyp');

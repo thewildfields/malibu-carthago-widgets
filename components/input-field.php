@@ -12,6 +12,9 @@ function ___mcw__render__input_field($widget, $control, $type=null){
             widget-control="text-filter-input"
             <?php echo $type; ?>
             widget-control-key="<?php echo $widget->get_id().'-'.$control; ?>"
+            <?php if($control === 'dealerName'){ ?>
+                placeholder="<?php echo $settings['dealer_name_input_field_placeholder']; ?>"
+            <?php } ?>
         >
 
     </div>

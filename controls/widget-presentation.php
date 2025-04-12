@@ -72,6 +72,19 @@ function ___mcw__widget_presentation_controls($widget){
 		);
 
         $widget->add_control(
+			'dealer_name_input_field_placeholder',
+			[
+				'label' => esc_html__( 'Dealer Name Placeholder', 'malibu-carthago-widgets' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Start typing...', 'malibu-carthago-widgets' ),
+				'placeholder' => esc_html__( 'Start typing...', 'malibu-carthago-widgets' ),
+                'condition' => [
+                    'widget_content' => 'haendler',
+                ],
+            ]
+		);
+
+        $widget->add_control(
 			'search_button_text',
 			[
 				'label' => esc_html__( 'Search Button Text', 'malibu-carthago-widgets' ),
