@@ -42,12 +42,17 @@ const initMap = async (mapContainer) => {
     
     const params = await buildQueryParams(mapContainer, 'url');
 
+    if( !Object.keys(params).length ){
+        params.limit = 0;
+        params.loadAll = true;
+    }
+
     if( mapContainer.getAttribute('tax-markers') ){
         params.taxMarker = mapContainer.getAttribute('tax-markers');
     }
 
     if( !Object.hasOwn(params, 'place') ){
-        params.limit = 0;
+
         await fetchDealers(params, false, map, false);
     } else {
         await fetchDealers(params, true, map, true);

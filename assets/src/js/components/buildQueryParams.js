@@ -11,7 +11,7 @@ const buildQueryParams = async (widget = null, source = null) => {
     const initialParams = {};
     const queryObject = {};
 
-    const allowedParameters = ['place','radius','model', 'includeNeighbors', 'dealerName', 'widgetType'];
+    const allowedParameters = ['place','radius','model', 'includeNeighbors', 'dealerName', 'widgetType','haendlertyp'];
 
     if( widget && source === 'widget' ){
         allowedParameters.forEach(parameter => {

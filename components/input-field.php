@@ -1,6 +1,6 @@
 <?php 
 
-function ___mcw__render__input_field($widget, $control, $type=null){
+function ___mcw__render_input_field($widget, $settings,  $control, $type=null){
     
 ?>
 

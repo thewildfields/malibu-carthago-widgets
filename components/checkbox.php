@@ -7,7 +7,7 @@ require_once ___MCW__PLUGIN_DIR_PATH . 'components/input-field.php';
             ?>
 
             <div class="---mcw--mcs__valueContainer">
-                <?php ___mcw__render__input_field($widget, 'model', 'dropdown-opener'); ?>
+                <?php ___mcw__render_input_field($widget, $settings, 'model', 'dropdown-opener'); ?>
                 <div class="---mcw--mcs__valueList" widget-control="selected-value-list"></div>
             </div>
 

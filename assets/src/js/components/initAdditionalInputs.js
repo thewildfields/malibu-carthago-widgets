@@ -19,7 +19,6 @@ const initAdditionalInputs = (widget) => {
                     attribute.push(value);
                 } else {
                     attribute.splice(attribute.indexOf(value), 1);
-                    console.log(attribute);
                 }
                 widget.setAttribute(category, attribute.join('+'));
             }

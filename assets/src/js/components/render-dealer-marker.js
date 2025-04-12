@@ -3,8 +3,6 @@ import googleAPILoader from "./google-api";
 import renderInfowindow from "./render-infowindow";
 
 const renderDealerMarker = async (dealer, map, bounds, resize) => {
-
-    console.log(dealer);
     
     const { AdvancedMarkerElement } = await googleAPILoader.importLibrary('marker');
     if ( !dealer.location.lat || !dealer.location.lng ){
