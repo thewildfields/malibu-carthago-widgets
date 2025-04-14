@@ -11,15 +11,9 @@ function ___mcw__render_dropdown_input_group($items, $taxonomy, $terms, $term, $
         widget-control="dropdown-option-group"
     >
         
-        <p class="---mcw--mcs__dropdownGroupTitle"><?php echo $term->name; ?></p>
+        <p class="---mcw--mcs__dropdownGroupTitle"><?php echo $term->name; ?> </p>
         
         <?php
-        
-            foreach ($items as $item) {
-                if( has_term( $term, $taxonomy, $item ) ) {
-                    ___mcw__render_dropdown_item( $widget, $item, $parameter);
-                }
-            }
 
             if (!empty(get_term_children( $term->term_id, $taxonomy )) ){ ?>
                 <div class="---mcw--mcs__dropdownChildrenGroup">
@@ -34,7 +28,14 @@ function ___mcw__render_dropdown_input_group($items, $taxonomy, $terms, $term, $
                     
                     ?>
                 </div>
-            <?php }
+            <?php } else {
+        
+                foreach ($items as $item) {
+                    if( has_term( $term->term_id, $taxonomy, $item ) ) {
+                        ___mcw__render_dropdown_item( $widget, $item, $parameter);
+                    }
+                }
+            }
 
         ?>
 
