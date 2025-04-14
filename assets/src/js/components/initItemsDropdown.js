@@ -20,7 +20,8 @@ const initItemsDropdown = () => {
         document.addEventListener('click', (e) => {
             if (
                 !e.target.closest(selectors.dropdownBlock) &&
-                !e.target.closest(selectors.dropdownInput)
+                !e.target.closest(selectors.dropdownInput) && 
+                !e.target.closest(selectors.additionalInputs)
             ){
                 for (let i = 0; i < dropdownBlocks.length; i++) {
                     const dropdown = dropdownBlocks[i];

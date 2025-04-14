@@ -58,6 +58,10 @@
             flex: 0 0 100%;
         }
 
+        input[type="radio"], input[type="checkbox"], label{
+            outline: none!important;
+        }
+
     }
 
     &_error{

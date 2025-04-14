@@ -20,6 +20,12 @@ const initAdditionalInputs = (widget) => {
                         const optionTerms = option.getAttribute('categories').split('+');
                         option.style.display = optionTerms.includes(selectedId) ? 'flex' : 'none';
                     });
+                    dropdownOptions.forEach(option => {
+                        const optionsGroup = option.closest(selectors.dropdownOptionGroup);
+                        const optionsInGroup = optionsGroup.querySelectorAll(selectors.dropdownOption);
+                        const activeOptionsInGroup = Array.from(optionsInGroup).filter(el => getComputedStyle(el).display !== 'none');
+                        optionsGroup.style.display = activeOptionsInGroup.length > 0 ? 'flex' : 'none';
+                    })
                 }
             }
             if( type === 'checkbox' ){

@@ -6,7 +6,10 @@ function ___mcw__render_dropdown_input_group($items, $taxonomy, $terms, $term, $
 
 ?>
 
-    <div class="---mcw--mcs__dropdownOptionsGroup">
+    <div
+        class="---mcw--mcs__dropdownOptionsGroup"
+        widget-control="dropdown-option-group"
+    >
         
         <p class="---mcw--mcs__dropdownGroupTitle"><?php echo $term->name; ?></p>
         
