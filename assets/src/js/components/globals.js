@@ -19,6 +19,7 @@ export const selectors = {
     dropdownInput: '[widget-control="dropdown-input"]',
     dropdownOption: '[widget-control="dropdown-option"]',
     dropdownOptionGroup: '[widget-control="dropdown-option-group"]',
+    dropdownValueList: '[widget-control="selected-value-list"]',
     // Map
     mapContainer: '[widget-control="dealers-map-container"]',
     // Dealers Search Results

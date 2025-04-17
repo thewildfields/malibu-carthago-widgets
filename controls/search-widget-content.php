@@ -95,28 +95,12 @@ function ___mcw__search_widget_content_controls($widget) {
         );
 
         $widget->add_control(
-            'show_term_hierarchy',
-			[
-				'label' => esc_html__( 'Show Term Hierarchy', 'malibu-carthago-widgets' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
-				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-                'description' => esc_html__( 'Only works for hierarchical taxonomies'),
-                'condition' => [
-                    'widget_content' => 'fahrzeuge',
-                    'group_items_by_terms' => 'yes'
-                ]
-			]
-        );
-
-        $widget->add_control(
             'enable_additional_taxonomy_filter',
 			[
 				'label' => esc_html__( 'Add primary taxonomy switcher', 'malibu-carthago-widgets' ),
                 'description' => esc_html__( 'Top level Vehicle type for Vehicles, Dealer Service for dealers'),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_block' => true,
 				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
 				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
 				'return_value' => 'yes',
@@ -164,8 +148,29 @@ function ___mcw__search_widget_content_controls($widget) {
                     'place' => __('Location', 'malibu-carthago-widgets'),
                 ],
                 'multiple' => true,
+                'label_block' => true,
                 'condition' => [
                     'widget_content' => 'fahrzeuge',
+                    'required_parameters' => 'yes'
+                ],
+                'frontend_available' => true,
+            ]
+        );
+ 
+        $widget->add_control(
+            'required_search_parameters',
+            [
+                'label' => __('Required Search Parameters', 'malibu-carthago-widgets'),
+                'description' => __('Select which parameters should be present for the search to work', 'malibu-carthago-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => [
+                    'dealer_name' => __('Vehicle model', 'malibu-carthago-widgets'),
+                    'place' => __('Location', 'malibu-carthago-widgets'),
+                ],
+                'multiple' => true,
+                'label_block' => true,
+                'condition' => [
+                    'widget_content' => 'haendler',
                     'required_parameters' => 'yes'
                 ],
                 'frontend_available' => true,
@@ -195,6 +200,7 @@ function ___mcw__search_widget_content_controls($widget) {
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( 'Default title', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+                'label_block' => true,
                 'condition' => [
                     'required_parameters' => 'yes',
                     'show_error_messages' => 'yes',
@@ -211,6 +217,7 @@ function ___mcw__search_widget_content_controls($widget) {
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( 'Default title', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+                'label_block' => true,
                 'condition' => [
                     'required_parameters' => 'yes',
                     'show_error_messages' => 'yes',

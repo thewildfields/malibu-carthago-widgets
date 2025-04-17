@@ -53,7 +53,7 @@
 
                         foreach ($termsArray as $term) {
 
-                            if( $settings['show_term_hierarchy'] === 'yes' && !$term->parent ){
+                            if( !$term->parent ){
 
                                 ___mcw__render_dropdown_input_group($items, $taxonomy, $termsArray, $term, $widget, $parameter);
 

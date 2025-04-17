@@ -10,6 +10,13 @@ const initSearch = async (widget, settings) => {
 
     const params = await buildQueryParams(widget, 'widget');
 
+    const mapContainer = document.querySelector(selectors.mapContainer);
+
+    if( mapContainer &&  mapContainer.getAttribute('tax-markers') ){
+        params.taxMarker = mapContainer.getAttribute('tax-markers');
+    }
+
+
     const missingParameters = requiredParams.filter(param => !params[param]);
 
     if( missingParameters.length ){

@@ -12,6 +12,7 @@ const initInputFields = (widget) => {
         const input = inputFields[i];
         input.addEventListener('input', () => {
             const value = input.value.toLowerCase().trim();
+            console.log(value);
             if( input.hasAttribute('dropdown-input') ){
                 return;
             }

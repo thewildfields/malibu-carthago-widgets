@@ -12,6 +12,7 @@ const initAdditionalInputs = (widget) => {
             let value = input.value;
             if( type === 'radio' ){
                 widget.setAttribute(category, value);
+                widget.removeAttribute('model');
                 const widgetType = widget.getAttribute('widgettype');
                 if( widgetType === 'fahrzeuge' && category === 'fahrzeugart'){
                     const selectedId = input.value;
@@ -26,6 +27,9 @@ const initAdditionalInputs = (widget) => {
                         const activeOptionsInGroup = Array.from(optionsInGroup).filter(el => getComputedStyle(el).display !== 'none');
                         optionsGroup.style.display = activeOptionsInGroup.length > 0 ? 'flex' : 'none';
                     })
+                    const selectedValueList = widget.querySelector(selectors.dropdownValueList);
+                    selectedValueList.innerHTML = '';
+                    selectedValueList.style.zIndex = '-1';
                 }
             }
             if( type === 'checkbox' ){

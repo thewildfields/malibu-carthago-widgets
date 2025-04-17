@@ -2,7 +2,12 @@
 
 import { selectors } from "./globals";
 
+const initDropdownInput = () => {
+
+
+
 const widgetTextFilterInputs = document.querySelectorAll(selectors.dropdownInput);
+
 
 for (let i = 0; i < widgetTextFilterInputs.length; i++) {
 
@@ -38,3 +43,7 @@ document.addEventListener('click' , (e) => {
         }
     }
 })
+
+}
+
+export default initDropdownInput;

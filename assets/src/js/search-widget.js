@@ -9,6 +9,7 @@ import toggleNeighborCountries from './components/toggleNeighborCountries';
 import validateWidget from './components/validateWidget';
 import initInputFields from './components/initInputFields';
 import initAdditionalInputs from './components/initAdditionalInputs';
+import initDropdownInput from './components/search-text-inputs';
 
 
 window.addEventListener( 'elementor/frontend/init', () => {
@@ -21,6 +22,7 @@ window.addEventListener( 'elementor/frontend/init', () => {
         validateWidget(widget, settings);
         initRadiusDropdown(widget, settings);
         initItemsDropdown();
+        initDropdownInput();
         initInputFields(widget);
         initItemSelection(widget, settings);
         toggleNeighborCountries(widget);
