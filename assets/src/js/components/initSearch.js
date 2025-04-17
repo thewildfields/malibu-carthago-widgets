@@ -31,7 +31,7 @@ const initSearch = async (widget, settings) => {
 
     if( settings.results_target === 'different_page' ){
         const searchParams = new URLSearchParams(params);
-        const url = settings.target_page + '?' + searchParams.toString();
+        const url = settings.target_page + '#dealers_map?' + searchParams.toString();
         window.open(url, settings.open_in_new_tab ? '_blank' : '_self' );
     } else if( settings.results_target === 'current_page' ){
         const map = globalThis.appData?.map;
