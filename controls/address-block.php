@@ -23,19 +23,6 @@ function ___mcw__address_block_controls($widget) {
         );
 
         $widget->add_control(
-			'address_field_position',
-			[
-				'label' => esc_html__( 'Adress Field Position', 'malibu-carthago-widgets' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'top',
-				'options' => [
-					'top' => esc_html__( 'Top of Widget', 'malibu-carthago-widgets' ),
-					'bottom' => esc_html__( 'Bottom of Widget', 'malibu-carthago-widgets' ),
-				],
-			]
-		);
-
-        $widget->add_control(
 			'address_field_placeholder',
 			[
 				'label' => esc_html__( 'Placeholder for address field', 'malibu-carthago-widgets' ),
