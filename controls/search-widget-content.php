@@ -22,10 +22,10 @@ function ___mcw__search_widget_content_controls($widget) {
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
                     '' => __('Select Content Type', 'malibu-carthago-widgets'),
-                    'fahrzeuge' => __('Vehicles', 'malibu-carthago-widgets'),
-                    'haendler' => __('Dealers', 'malibu-carthago-widgets'),
+                    'vehicles' => __('Vehicles', 'malibu-carthago-widgets'),
+                    'dealers' => __('Dealers', 'malibu-carthago-widgets'),
                 ],
-                'default' => __('fahrzeuge', 'malibu-carthago-widgets'),
+                'default' => __('vehicles', 'malibu-carthago-widgets'),
             ]
         );
 
@@ -41,7 +41,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 ],
                 'default' => 'all',
                 'condition' => [
-                    'widget_content' => 'fahrzeuge',
+                    'widget_content' => 'vehicles',
                 ]
             ]
         );
@@ -54,7 +54,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 'options' => $fahrzeugartTerms,
                 'multiple' => true,
                 'condition' => [
-                    'widget_content' => 'fahrzeuge',
+                    'widget_content' => 'vehicles',
                     'items_selection_type!' => ['all', 'dynamic'] 
                 ]
             ]
@@ -73,7 +73,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 ],
                 'default' => 'all',
                 'condition' => [
-                    'widget_content' => 'haendler',
+                    'widget_content' => 'dealers',
                     'items_selection_type!' => ['all', 'dynamic'] 
                 ]
             ]
@@ -89,40 +89,12 @@ function ___mcw__search_widget_content_controls($widget) {
 				'return_value' => 'yes',
 				'default' => 'yes',
                 'condition' => [
-                    'widget_content' => 'fahrzeuge',
+                    'widget_content' => 'vehicles',
                 ]
 			]
         );
 
-        $widget->add_control(
-            'enable_additional_taxonomy_filter',
-			[
-				'label' => esc_html__( 'Add primary taxonomy switcher', 'malibu-carthago-widgets' ),
-                'description' => esc_html__( 'Top level Vehicle type for Vehicles, Dealer Service for dealers'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_block' => true,
-				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
-				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-        );
-
-        $widget->add_control(
-            'additional_taxonomy_filter_type',
-			[
-				'label' => esc_html__( 'Add primary taxonomy switcher', 'malibu-carthago-widgets' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'radio' => esc_html__( 'Radio Buttons', 'malibu-carthago-widgets' ),
-                    'checkbox' => esc_html__( 'Checkboxes', 'malibu-carthago-widgets' )
-                ],
-				'default' => 'radio',
-                'condition' => [
-                    'enable_additional_taxonomy_filter' => 'yes'
-                ]
-			]
-        );
+        
 
         $widget->add_control(
             'required_parameters',
@@ -138,7 +110,7 @@ function ___mcw__search_widget_content_controls($widget) {
         );
  
         $widget->add_control(
-            'required_search_parameters',
+            'required_search_parameters_vehicle',
             [
                 'label' => __('Required Search Parameters', 'malibu-carthago-widgets'),
                 'description' => __('Select which parameters should be present for the search to work', 'malibu-carthago-widgets'),
@@ -150,7 +122,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 'multiple' => true,
                 'label_block' => true,
                 'condition' => [
-                    'widget_content' => 'fahrzeuge',
+                    'widget_content' => 'vehicles',
                     'required_parameters' => 'yes'
                 ],
                 'frontend_available' => true,
@@ -158,7 +130,7 @@ function ___mcw__search_widget_content_controls($widget) {
         );
  
         $widget->add_control(
-            'required_search_parameters',
+            'required_search_parameters_dealer',
             [
                 'label' => __('Required Search Parameters', 'malibu-carthago-widgets'),
                 'description' => __('Select which parameters should be present for the search to work', 'malibu-carthago-widgets'),
@@ -170,7 +142,7 @@ function ___mcw__search_widget_content_controls($widget) {
                 'multiple' => true,
                 'label_block' => true,
                 'condition' => [
-                    'widget_content' => 'haendler',
+                    'widget_content' => 'dealers',
                     'required_parameters' => 'yes'
                 ],
                 'frontend_available' => true,

@@ -6,6 +6,7 @@ use Elementor\Utils;
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/widget-search-results.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/search-widget-content.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/widget-presentation.php' );
+require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/taxonomy-filter.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/address-block.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'controls/fields-style.php' );
 
@@ -43,6 +44,7 @@ class Malibu_Carthago_Search_Widget extends \Elementor\Widget_Base {
 
     protected function register_controls() {
 
+        ___mcw__taxonomy_filter_controls($this);
         ___mcw__widget_search_results($this);
         ___mcw__search_widget_content_controls($this);
         ___mcw__widget_presentation_controls($this);

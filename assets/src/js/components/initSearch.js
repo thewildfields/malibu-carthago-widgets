@@ -6,7 +6,19 @@ import fetchDealers from "./fetchDealers";
 
 const initSearch = async (widget, settings) => {
 
-    const requiredParams = settings.required_search_parameters ?? [];
+    let requiredParams = [];
+
+    switch (settings.widget_content) {
+        case 'fahrzeuge':
+            requiredParams = settings.required_search_parameters_vehicle ?? []
+        break;
+        case 'haendler':
+            requiredParams = settings.required_search_parameters_dealer ?? []
+        break;
+        default:
+            requiredParams = []
+        break;
+    }
 
     const params = await buildQueryParams(widget, 'widget');
 

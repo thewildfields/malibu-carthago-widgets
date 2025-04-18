@@ -15,6 +15,10 @@ const renderWidgetError = (widget, parameter, settings) => {
             input = widget.querySelector(selectors.dropdownInput);
             message = settings.missing_models_message;
             break;
+        case 'dealers':
+            input = widget.querySelector(selectors.dropdownInput);
+            message = 'no dealers found';
+            break;
         default:
             break;
     }

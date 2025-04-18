@@ -3,7 +3,7 @@
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'components/items-list.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'components/address-field.php' );
 require_once ( ___MCW__PLUGIN_DIR_PATH . 'components/search-button.php' );
-require_once ( ___MCW__PLUGIN_DIR_PATH . 'components/additional-taxonomy-filter.php' );
+require_once ( ___MCW__PLUGIN_DIR_PATH . 'components/taxonomy-filter.php' );
 
 function ___mcw__search_widget_render($widget){
 
@@ -23,9 +23,9 @@ function ___mcw__search_widget_render($widget){
 
         <?php
         
-            if( $settings['widget_content'] === 'haendler' ){
+            if( $settings['widget_content'] === 'dealers' ){
 
-                ___mcw__additional_taxonomy_filter($widget, $settings);
+                ___mcw__taxonomy_filter($widget, $settings);
 
             }
 

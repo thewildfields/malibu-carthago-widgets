@@ -7,12 +7,12 @@
 
         $taxonomy; $terms; $termsArray;
         switch ($settings['widget_content']) {
-            case 'fahrzeuge':
+            case 'vehicles':
                 $taxonomy = 'fahrzeugart';
                 $terms = 'fahrzeugart_items';
                 $parameter = 'model';
                 break;
-            case 'haendler':
+            case 'dealers':
                 $taxonomy = 'haendlertyp';
                 $terms = 'haendlertyp_items';
                 $parameter = 'dealer';

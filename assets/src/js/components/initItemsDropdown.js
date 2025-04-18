@@ -21,7 +21,7 @@ const initItemsDropdown = () => {
             if (
                 !e.target.closest(selectors.dropdownBlock) &&
                 !e.target.closest(selectors.dropdownInput) && 
-                !e.target.closest(selectors.additionalInputs)
+                !e.target.closest(selectors.taxonomyFilterInputs)
             ){
                 for (let i = 0; i < dropdownBlocks.length; i++) {
                     const dropdown = dropdownBlocks[i];

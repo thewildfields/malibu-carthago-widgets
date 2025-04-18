@@ -68,9 +68,9 @@ const initItemSelection = (widget, settings) => {
             const typingInput = widget.querySelector('[widget-control="dropdown-input"]');
             const placeholder = typingInput.getAttribute('placeholder');
             if( selectedValues.length > 0 ){
-                typingInput.setAttribute('placeholder', '');
+                // typingInput.setAttribute('placeholder', '');
             } else {
-                typingInput.setAttribute('placeholder', placeholder);
+                // typingInput.setAttribute('placeholder', placeholder);
             }
     
         })

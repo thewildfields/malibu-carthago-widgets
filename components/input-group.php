@@ -1,6 +1,6 @@
 <?php
 
-function ___mcw__render_input_group($widget, $settings, $item, $inputType){
+function ___mcw__render_input_group($widget, $settings, $item, $inputType, $extraValues = []){
 
     $itemType;
     $itemCategory;
@@ -9,11 +9,11 @@ function ___mcw__render_input_group($widget, $settings, $item, $inputType){
     if( get_term($item) ){
         $itemType = 'term';
         $itemCategory = $item->taxonomy;
-        $itemID = $item->term_id;
+        $itemID = implode('+', array_merge( [$item->term_id], $extraValues ) );
     } else if( get_post($item) ){
         $itemType = 'post';
         $itemCategory = get_post_type($item);
-        $itemID = get_the_ID($item);
+        $itemID = get_the_id($item);
     }
 
     $inputName = $widget->get_id().'-'.$itemCategory;
@@ -22,7 +22,7 @@ function ___mcw__render_input_group($widget, $settings, $item, $inputType){
 
     <label
         class="---mcw--mcs__inputGroup ---mcw--mcs__inputGroup_horizontal"
-        widget-control="additional-input"
+        widget-control="taxonomy-filter-input"
     >
         <input
             type="<?php echo $inputType; ?>"

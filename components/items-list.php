@@ -6,6 +6,7 @@ require_once ___MCW__PLUGIN_DIR_PATH . 'components/dropdown.php';
 
 function ___mcw__render_items_list($widget, $settings){
 
+
     $widgetContent = $settings['widget_content'];
     $widgetDisplayType = $settings['items_display'];
 
@@ -14,42 +15,46 @@ function ___mcw__render_items_list($widget, $settings){
         return;
     }
 
-    if( $widgetContent === 'fahrzeuge' ){
+    if( $widgetContent === 'vehicles' ){
         
-        ___mcw__additional_taxonomy_filter($widget, $settings);
+        ___mcw__taxonomy_filter($widget, $settings);
+
+        $taxonomy; $terms; $postType;
+
+        switch ($widgetContent) {
+            case 'vehicles':
+                $postType = 'fahrzeuge';
+                $taxonomy = 'fahrzeugart';
+                $terms = 'fahrzeugart_items';
+                break;
+            case 'dealers':
+                $postType = 'haendler';
+                $taxonomy = 'haendlertyp';
+                $terms = 'haendlertyp_items';
+                break;
+        }
 
         $itemsQueryArgs = array(
-            'post_type' => $widgetContent,
-            'posts_per_page' => -1
+            'post_type' => $postType,
+            'posts_per_page' => -1,
         );
-    
-        if( $settings['items_selection_type'] === 'manual_terms' ){
-            $taxonomy; $terms;
-            switch ($widgetContent) {
-                case 'fahrzeuge':
-                    $taxonomy = 'fahrzeugart';
-                    $terms = 'fahrzeugart_items';
-                    break;
-                case 'haendler':
-                    $taxonomy = 'haendlertyp';
-                    $terms = 'haendlertyp_items';
-                    break;
-            }
-    
-            $itemsQueryArgs['tax_query'] = [
+
+        if( $settings['widget_content'] === 'vehicles' && $settings['items_selection_type'] === 'manual' ){
+            $itemsQueryArgs['tax_query'] = array(
                 [
                     'taxonomy'  => $taxonomy,
                     'field'     => 'id',
                     'terms'     => $settings[$terms]
                 ]
-            ];
+            );
         }
-    
+
         $itemsQuery = new WP_Query($itemsQueryArgs);
     
         $items = $itemsQuery->posts;
 
-        if( sizeof($items) === 0 ){
+
+        if( !is_array($items) || sizeof($items) === 0 ){
             ___mcw__display_error_message('No items in selected Post type');
             return;
         }
@@ -64,7 +69,7 @@ function ___mcw__render_items_list($widget, $settings){
 
     }
 
-    if( $widgetContent === 'haendler' ){
+    if( $settings['widget_content'] === 'dealer' ){
         ___mcw__render_input_field($widget, $settings, 'dealerName');
     }
 

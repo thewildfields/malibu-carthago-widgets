@@ -5,7 +5,7 @@ export const selectors = {
     searchWidget: '[widget-control="search-widget"]',
     searchButton: '[widget-control="search-button"]',
     errorMessage: '[widget-control="error-message"]',
-    additionalInputs: '[widget-control="additional-input"]',
+    taxonomyFilterInputs: '[widget-control="taxonomy-filter-input"]',
     // Location
     locationInput: '[widget-control="location"]',
     neighborCountriesToggle: '[widget-control="neighbor-countries-toggle"]',
