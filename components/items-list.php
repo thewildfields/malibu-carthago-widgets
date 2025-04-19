@@ -37,6 +37,7 @@ function ___mcw__render_items_list($widget, $settings){
         $itemsQueryArgs = array(
             'post_type' => $postType,
             'posts_per_page' => -1,
+            'lang' => apply_filters( 'wpml_current_language', null )
         );
 
         if( $settings['widget_content'] === 'vehicles' && $settings['items_selection_type'] === 'manual' ){

@@ -59,7 +59,9 @@ const validateWidget = async (widget, settings) => {
     }
 
     Object.keys(params).forEach( p => {
-        widget.setAttribute(p, params[p]);
+        if( p !== 'widgetType'){
+            widget.setAttribute(p, params[p]);
+        }
     })
 
 
@@ -84,6 +86,28 @@ const validateWidget = async (widget, settings) => {
 
     // Location Inputs
     initAutocomplete(widget);
+
+    // Switch to the correct widget tab;
+
+    // const widgetType = params.widgetType;
+
+    // if( widgetType ){
+    //     const isCurrentWidget = widget.getAttribute('widgettype') === widgetType;
+    //     if( isCurrentWidget ){
+    //         const tab = widget.closest('[role="tabpanel"]');
+    //         if( tab ){
+    //             const tabsParent = tab.closest('.e-n-tabs-content');
+    //             const tabs = tabsParent.querySelectorAll('[role="tabpanel"]');
+    //             tabs.forEach(tabItem => {
+    //                 if( tabItem === tab ){
+    //                     tabItem.classList.add('e-active');
+    //                 } else {
+    //                     tabItem.classList.remove('e-active');
+    //                 }
+    //             });
+    //         }
+    //     }
+    // }
 
 }
 

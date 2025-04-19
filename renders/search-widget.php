@@ -13,8 +13,9 @@ function ___mcw__search_widget_render($widget){
         return;
     }
 
-?>
+    echo $settings['widget_content'];
 
+?>
     <div
         class="---mcw--mcs"
         widget-control="search-widget"

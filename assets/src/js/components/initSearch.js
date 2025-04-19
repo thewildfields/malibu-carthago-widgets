@@ -9,10 +9,10 @@ const initSearch = async (widget, settings) => {
     let requiredParams = [];
 
     switch (settings.widget_content) {
-        case 'fahrzeuge':
+        case 'vehicles':
             requiredParams = settings.required_search_parameters_vehicle ?? []
         break;
-        case 'haendler':
+        case 'dealers':
             requiredParams = settings.required_search_parameters_dealer ?? []
         break;
         default:
@@ -30,6 +30,8 @@ const initSearch = async (widget, settings) => {
 
 
     const missingParameters = requiredParams.filter(param => !params[param]);
+
+    console.log(requiredParams);
 
     if( missingParameters.length ){
         if( missingParameters.includes('place') ){

@@ -30,7 +30,6 @@ const renderDealerCard = (widget, dealer) => {
         allowedCategories = widget.getAttribute('allowed-categories').split('+');
     }
     Object.keys(dealer.categories).forEach( category => {
-        console.log(category);
         const categoryItem = document.createElement('span');
         categoryItem.classList.add(classes.dealerCardCategoryItem);
         categoryItem.textContent = dealer.categories[category];

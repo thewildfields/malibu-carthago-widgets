@@ -26,6 +26,7 @@ function ___mcw__search_widget_content_controls($widget) {
                     'dealers' => __('Dealers', 'malibu-carthago-widgets'),
                 ],
                 'default' => __('vehicles', 'malibu-carthago-widgets'),
+                'frontend_available' => true,
             ]
         );
 
