@@ -1,6 +1,6 @@
 // Options
 
-import { selectors } from "./globals";
+import { classes, selectors } from "./globals";
 
 const initItemSelection = (widget, settings) => {
 
@@ -66,11 +66,10 @@ const initItemSelection = (widget, settings) => {
     
             const selectedValues = widget.querySelectorAll('.---mcw--mcs__optionValue');
             const typingInput = widget.querySelector('[widget-control="dropdown-input"]');
-            const placeholder = typingInput.getAttribute('placeholder');
             if( selectedValues.length > 0 ){
-                // typingInput.setAttribute('placeholder', '');
+                typingInput.classList.add(classes.widgetInputNoPlaceholder)
             } else {
-                // typingInput.setAttribute('placeholder', placeholder);
+                typingInput.classList.remove(classes.widgetInputNoPlaceholder)
             }
     
         })

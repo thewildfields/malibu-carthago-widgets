@@ -31,8 +31,6 @@ const initSearch = async (widget, settings) => {
 
     const missingParameters = requiredParams.filter(param => !params[param]);
 
-    console.log(requiredParams);
-
     if( missingParameters.length ){
         if( missingParameters.includes('place') ){
             renderWidgetError(widget, 'location', settings);
@@ -44,6 +42,8 @@ const initSearch = async (widget, settings) => {
     }
 
     if( settings.results_target === 'different_page' ){
+        delete params.lat;
+        delete params.lng;
         const searchParams = new URLSearchParams(params);
         const url = settings.target_page + '?' + searchParams.toString() + '#---mcw--dm';
         window.open(url, settings.open_in_new_tab ? '_blank' : '_self' );

@@ -89,25 +89,29 @@ const validateWidget = async (widget, settings) => {
 
     // Switch to the correct widget tab;
 
-    // const widgetType = params.widgetType;
+    const widgetType = params.widgetType;
 
-    // if( widgetType ){
-    //     const isCurrentWidget = widget.getAttribute('widgettype') === widgetType;
-    //     if( isCurrentWidget ){
-    //         const tab = widget.closest('[role="tabpanel"]');
-    //         if( tab ){
-    //             const tabsParent = tab.closest('.e-n-tabs-content');
-    //             const tabs = tabsParent.querySelectorAll('[role="tabpanel"]');
-    //             tabs.forEach(tabItem => {
-    //                 if( tabItem === tab ){
-    //                     tabItem.classList.add('e-active');
-    //                 } else {
-    //                     tabItem.classList.remove('e-active');
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
+    if( widgetType ){
+        const isCurrentWidget = widget.getAttribute('widgettype') === widgetType;
+        if( isCurrentWidget ){
+            const tab = widget.closest('[role="tabpanel"]');
+            if( tab ){
+                const tabsParent = tab.closest('.e-n-tabs-content');
+                const tabs = tabsParent.querySelectorAll('[role="tabpanel"]');
+                tabs.forEach(tabItem => {
+                    const tabId = tabItem.getAttribute('id');
+                    const tabHeader = document.querySelector(`.e-n-tab-title[aria-controls="${tabId}"]`);
+                    if( tabItem === tab ){
+                        tabItem.classList.add('e-active');
+                        tabHeader.setAttribute('aria-selected', 'true')
+                    } else {
+                        tabItem.classList.remove('e-active');
+                        tabHeader.setAttribute('aria-selected', 'false')
+                    }
+                });
+            }
+        }
+    }
 
 }
 

@@ -1,7 +1,7 @@
 import getPlaceData from "./get-place-data";
 import { selectors } from "./globals";
 
-const buildQueryParams = async (widget = null, source = null) => {
+const buildQueryParams = async (widget = null, source = null, target = "search") => {
 
     if( source !== 'widget' && source !== 'url'){
         console.error('buildQueryParams function called incorrectly');
@@ -39,7 +39,11 @@ const buildQueryParams = async (widget = null, source = null) => {
             const country = placeData.address_components.filter(component => component.types.includes('country'));
             queryObject.countryCode = country[0].short_name.toLowerCase();
         }
-        if(!placeData.geometry){
+        if( source === 'widget' && placeData.geometry){
+            queryObject.lat = placeData.geometry.location.lat();
+            queryObject.lng = placeData.geometry.location.lng();
+        }
+        if( !placeData.geometry ) {
             console.error("location error");
             return;
         }

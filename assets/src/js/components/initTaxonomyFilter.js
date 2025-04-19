@@ -1,5 +1,5 @@
 import getFurthestAncestor from "./getFurthestAncestor";
-import { selectors } from "./globals";
+import { classes, selectors } from "./globals";
 
 const initTaxonomyFilter = (widget) => {
 
@@ -13,11 +13,17 @@ const initTaxonomyFilter = (widget) => {
             let value = input.value;
             if( type === 'radio' ){
                 widget.setAttribute(category, value);
+                const dropdownInput = widget.querySelector(selectors.dropdownInput);
+                dropdownInput.classList.remove(classes.widgetInputNoPlaceholder);
                 widget.removeAttribute('model');
                 const widgetType = widget.getAttribute('widgettype');
                 if( widgetType === 'vehicles' && category === 'fahrzeugart'){
                     const selectedId = input.value.split('+');
                     const dropdownOptions = widget.querySelectorAll(selectors.dropdownOption);
+                    dropdownOptions.forEach(option => {
+                        const checkbox = option.querySelector('input[type="checkbox"]');
+                        checkbox.checked = false;
+                    })
                     dropdownOptions.forEach(option => {
                         const optionTerms = option.getAttribute('categories').split('+');
                         const selectedIds = new Set(selectedId);

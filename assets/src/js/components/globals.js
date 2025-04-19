@@ -50,6 +50,7 @@ export const classes = {
     // Inputs
     widgetInput: '---mcw--mcs__input',
     widgetInputError: '---mcw--mcs__input_error',
+    widgetInputNoPlaceholder: '---mcw--mcs__input_noPlacehoder'
 }
 
 // Attributes
