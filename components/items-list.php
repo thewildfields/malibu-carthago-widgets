@@ -8,7 +8,6 @@ function ___mcw__render_items_list($widget, $settings){
 
 
     $widgetContent = $settings['widget_content'];
-    $widgetDisplayType = $settings['items_display'];
 
     if( $widgetContent === '' ){
         ___mcw__display_error_message('Select appropriate content type');
@@ -19,7 +18,7 @@ function ___mcw__render_items_list($widget, $settings){
         
         ___mcw__taxonomy_filter($widget, $settings);
 
-        $taxonomy; $terms; $postType;
+        $taxonomy; $terms; $postType; $vehicleTerms; $vehicleTermIDs;
 
         switch ($widgetContent) {
             case 'vehicles':
@@ -40,14 +39,52 @@ function ___mcw__render_items_list($widget, $settings){
             'lang' => apply_filters( 'wpml_current_language', null )
         );
 
-        if( $settings['widget_content'] === 'vehicles' && $settings['items_selection_type'] === 'manual' ){
-            $itemsQueryArgs['tax_query'] = array(
-                [
-                    'taxonomy'  => $taxonomy,
-                    'field'     => 'id',
-                    'terms'     => $settings[$terms]
-                ]
-            );
+        if( get_post_type() === 'fahrzeuge' ){
+
+            $vehicleTerms = get_the_terms(get_the_ID(), 'fahrzeugart');
+            
+            if (!is_wp_error($vehicleTerms) && !empty($vehicleTerms)) {
+                $vehicleTermIDs = wp_list_pluck($vehicleTerms, 'term_id');
+            }
+
+        }
+
+        if( $settings['widget_content'] === 'vehicles' ){
+            if( $settings['items_selection_type'] === 'manual_terms') {
+                $itemsQueryArgs['tax_query'] = array(
+                    [
+                        'taxonomy'  => $taxonomy,
+                        'field'     => 'id',
+                        'terms'     => array_merge( $settings[$terms], $vehicleTermIDs )
+                    ]
+                );
+            }
+            if( $settings['items_selection_type'] === 'dynamic' ){
+
+
+                if( get_field('vehicle_type', get_the_ID()) === 'van' ){
+                    
+                    $itemsQueryArgs['tax_query'] = array(
+                        [
+                            'taxonomy'  => $taxonomy,
+                            'field'     => 'id',
+                            'terms'     => $settings['fahrzeugart_manual_vans_items']
+                        ]
+                    );
+                }
+
+                if( get_field('vehicle_type', get_the_ID()) === 'motorhome' ){
+
+                    $itemsQueryArgs['tax_query'] = array(
+                        [
+                            'taxonomy'  => $taxonomy,
+                            'field'     => 'id',
+                            'terms'     => $settings['fahrzeugart_manual_motorhome_items']
+                        ]
+                    );
+                }
+
+            }
         }
 
         $itemsQuery = new WP_Query($itemsQueryArgs);
@@ -59,18 +96,12 @@ function ___mcw__render_items_list($widget, $settings){
             ___mcw__display_error_message('No items in selected Post type');
             return;
         }
-    
-        if( $widgetDisplayType === 'checkboxes' ){
-            ___mcw__render__checkbox_input_group($widget, $settings, $items);
-        }
-    
-        if( $widgetDisplayType === 'dropdown' ){
-            ___mcw__render__dropdown_input_group($widget, $settings, $items);
-        }
+        
+        ___mcw__render__dropdown_input_group($widget, $settings, $items);
 
     }
 
-    if( $settings['widget_content'] === 'dealer' ){
+    if( $settings['widget_content'] === 'dealers' ){
         ___mcw__render_input_field($widget, $settings, 'dealerName');
     }
 

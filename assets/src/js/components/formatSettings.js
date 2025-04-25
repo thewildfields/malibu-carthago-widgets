@@ -2,6 +2,10 @@ const formatSettings = (settings) => {
 
     const updatedSettings = {};
 
+    if( !settings || !typeof(settings) === Object ){
+        return false;
+    }
+
     Object.keys(settings).forEach( property => {
         if( settings[property] === 'no' ){
             updatedSettings[property] = false;

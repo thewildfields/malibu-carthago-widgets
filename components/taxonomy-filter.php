@@ -31,14 +31,17 @@ function ___mcw__taxonomy_filter($widget, $settings){
     }
 
     $fahrzeugartTerms = ___mcw__get_formatted_items('term', 'fahrzeugart') ;
-    $vansCategories = array_keys( array_filter( $fahrzeugartTerms, '___mcw__filter_out_vans_terms') );
+    $vansCategories = array_keys( array_filter( $fahrzeugartTerms, '___mcw__filter_out_vans_terms') ); ?>
 
-    foreach ($items as $id) {
+    <div class="---mcw--mcs__taxonomyFilterWrapper">
 
-        $extraCategories = in_array($id, $vansCategories) ? $settings['taxonomy_filter_additional_vans_categories'] : [];
+        <?php
+            foreach ($items as $id) {
+                $extraCategories = in_array($id, $vansCategories) ? $settings['taxonomy_filter_additional_vans_categories'] : [];
+                ___mcw__render_input_group($widget, $settings, get_term($id), $settings['taxonomy_filter_type'], $extraCategories);
+            }
+        ?>
 
-        ___mcw__render_input_group($widget, $settings, get_term($id), $settings['taxonomy_filter_type'], $extraCategories);
+    </div>
 
-    }
-
-}
+<?php }

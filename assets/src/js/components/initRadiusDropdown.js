@@ -3,7 +3,6 @@ import { attributes, classes, selectors } from "./globals";
 const initRadiusDropdown = (widget, settings) => {
 
     if( !settings.radius_dropdown || !settings.radius_dropdown.length ){
-        console.warn('Radius dropdown error');
         return;
     }
 

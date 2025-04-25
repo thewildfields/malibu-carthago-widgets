@@ -52,11 +52,39 @@ function ___mcw__search_widget_content_controls($widget) {
             [
                 'label' => __('Taxonomy', 'malibu-carthago-widgets'),
                 'type' => \Elementor\Controls_Manager::SELECT2,
-                'options' => $fahrzeugartTerms,
+                'options' => ___mcw__get_formatted_items('term', 'fahrzeugart'),
                 'multiple' => true,
                 'condition' => [
                     'widget_content' => 'vehicles',
                     'items_selection_type!' => ['all', 'dynamic'] 
+                ]
+            ]
+        );
+
+        $widget->add_control(
+            'fahrzeugart_manual_vans_items',
+            [
+                'label' => __('Vans Terms', 'malibu-carthago-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => ___mcw__get_formatted_items('term', 'fahrzeugart'),
+                'multiple' => true,
+                'condition' => [
+                    'widget_content' => 'vehicles',
+                    'items_selection_type' => ['dynamic'] 
+                ]
+            ]
+        );
+
+        $widget->add_control(
+            'fahrzeugart_manual_motorhome_items',
+            [
+                'label' => __('Wohnmobile Terms', 'malibu-carthago-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => ___mcw__get_formatted_items('term', 'fahrzeugart'),
+                'multiple' => true,
+                'condition' => [
+                    'widget_content' => 'vehicles',
+                    'items_selection_type' => ['dynamic'] 
                 ]
             ]
         );
@@ -79,24 +107,6 @@ function ___mcw__search_widget_content_controls($widget) {
                 ]
             ]
         );
-
-        $widget->add_control(
-            'group_items_by_terms',
-			[
-				'label' => esc_html__( 'Group by Term', 'malibu-carthago-widgets' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
-				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-                'condition' => [
-                    'widget_content' => 'vehicles',
-                ]
-			]
-        );
-
-        
-
         $widget->add_control(
             'required_parameters',
 			[
@@ -174,11 +184,6 @@ function ___mcw__search_widget_content_controls($widget) {
 				'default' => esc_html__( 'Default title', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
                 'label_block' => true,
-                'condition' => [
-                    'required_parameters' => 'yes',
-                    'show_error_messages' => 'yes',
-                    'required_search_parameters' => 'model'
-                ],
                 'frontend_available' => true,
 			]
 		);
@@ -191,11 +196,18 @@ function ___mcw__search_widget_content_controls($widget) {
 				'default' => esc_html__( 'Default title', 'textdomain' ),
 				'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
                 'label_block' => true,
-                'condition' => [
-                    'required_parameters' => 'yes',
-                    'show_error_messages' => 'yes',
-                    'required_search_parameters' => 'place'
-                ],
+                'frontend_available' => true,
+			]
+		);
+
+        $widget->add_control(
+			'missing_dealers_message',
+			[
+				'label' => esc_html__( 'Error message for no dealers found', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'No dealers found', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type your message here', 'textdomain' ),
+                'label_block' => true,
                 'frontend_available' => true,
 			]
 		);

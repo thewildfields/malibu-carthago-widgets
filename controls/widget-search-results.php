@@ -80,7 +80,7 @@ function ___mcw__widget_search_results($widget) {
             'default' => 'yes',
             'frontend_available' => true,
             'condition' => [
-                'widget_content' => 'fahrzeuge'
+                'widget_content' => 'vehicles'
             ],
         ]
     );

@@ -42,11 +42,16 @@
                     widget-control="values-dropdown"
                 >
                     <?php
-                    
-                    if( $settings['group_items_by_terms'] === 'yes' ){
 
                         if( $settings['items_selection_type'] === 'manual_terms'){
                             $termsArray = get_terms($taxonomy, ['include' => $settings[$terms]]);
+                        } else if( $settings['items_selection_type'] === 'dynamic'){
+                            if( get_field('vehicle_type', get_the_ID()) === 'motorhome' ){
+                                $termsArray = get_terms($taxonomy, ['include' => $settings['fahrzeugart_manual_motorhome_items']]);
+                            }
+                            if( get_field('vehicle_type', get_the_ID()) === 'van' ){
+                                $termsArray = get_terms($taxonomy, ['include' => $settings['fahrzeugart_manual_vans_items']]);
+                            }
                         } else {
                             $termsArray = get_terms($taxonomy);
                         }
@@ -61,13 +66,7 @@
 
                         }
 
-                    } else {
-
-                        foreach ($items as $item) {
-                            ___mcw__render_dropdown_item( $widget, $item, $parameter);
-                        }
-
-                    } ?>
+                    ?>
 
                 </div>
             </div>

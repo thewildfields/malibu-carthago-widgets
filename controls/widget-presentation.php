@@ -42,22 +42,6 @@ function ___mcw__widget_presentation_controls($widget){
         );
 
         $widget->add_control(
-            'items_display',
-            [
-                'label' => __('Display Mode', 'malibu-carthago-widgets'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'dropdown' => 'Dropdown',
-                    'checkboxes' => 'Checkboxes',
-                ],
-                'default' => 'dropdown',
-                'condition' => [
-                    'widget_content!' => '',
-                ]
-            ]
-        );
-
-        $widget->add_control(
 			'dropdown_input_field_placeholder',
 			[
 				'label' => esc_html__( 'Dropdown Placeholder Text', 'malibu-carthago-widgets' ),
@@ -66,7 +50,6 @@ function ___mcw__widget_presentation_controls($widget){
 				'placeholder' => esc_html__( 'Start typing...', 'malibu-carthago-widgets' ),
                 'condition' => [
                     'widget_content!' => '',
-                    'items_display' => 'dropdown'
                 ]
             ]
 		);
@@ -79,7 +62,7 @@ function ___mcw__widget_presentation_controls($widget){
 				'default' => esc_html__( 'Start typing...', 'malibu-carthago-widgets' ),
 				'placeholder' => esc_html__( 'Start typing...', 'malibu-carthago-widgets' ),
                 'condition' => [
-                    'widget_content' => 'haendler',
+                    'widget_content' => 'dealers',
                 ],
             ]
 		);

@@ -1,10 +1,16 @@
 import { globalMap, selectors } from "./globals";
 import googleAPILoader from "./google-api";
-import renderWidgetError from "./render-widget-error";
+import renderWidgetError from "./renderWidgetError";
 import buildQueryParams from "./buildQueryParams";
 import fetchDealers from "./fetchDealers";
 
 const initSearch = async (widget, settings) => {
+
+    const dealerCards = document.querySelectorAll(selectors.dealerCard);
+
+    dealerCards.forEach(card => {
+        card.remove();
+    });
 
     let requiredParams = [];
 

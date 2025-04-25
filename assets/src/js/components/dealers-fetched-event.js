@@ -1,9 +1,12 @@
-const dispatchDealersFetchedEvent = async (dealersResponse, renderCards = true, map, resize) => {
+
+
+const dispatchDealersFetchedEvent = async (params, dealersResponse, renderCards = true, map, resize) => {
 
     const detail = {};
     detail.dealersResponse = dealersResponse.data;
     detail.renderCards = renderCards;
     detail.map = map;
+    detail.mapCenter = {lat: params.lat, lng: params.lng}
     detail.resize = resize;
 
     const dealersFetchedEvent = new CustomEvent("dealersFetched", {

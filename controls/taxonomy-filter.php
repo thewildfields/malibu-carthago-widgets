@@ -63,7 +63,7 @@ function ___mcw__taxonomy_filter_controls($widget){
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple' => true,
-                'options' => ___mcw__get_formatted_items('term', 'fahrzeugart'),
+                'options' => ___mcw__get_formatted_items('term', 'fahrzeugart', true),
                 'condition' => [
                     'widget_content' => 'vehicles',
                     'enable_taxonomy_filter' => 'yes',

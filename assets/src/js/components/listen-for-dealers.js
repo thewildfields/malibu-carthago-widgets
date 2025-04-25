@@ -1,8 +1,11 @@
 import renderDealerCard from "./render-dealer-card";
 import renderDealerMarker from "./render-dealer-marker";
 import { selectors } from "./globals";
+import renderWidgetError from "./renderWidgetError";
+import googleAPILoader from "./google-api";
+import buildQueryParams from "./buildQueryParams";
 
-const listenForDealers = async (method=null) => {
+const listenForDealers = async (method=null, widget=null, settings=null) => {
 
     document.addEventListener('dealersFetched', async (e) => {
 
@@ -14,7 +17,15 @@ const listenForDealers = async (method=null) => {
         }
 
         if( dealers.length === 0){
-            console.error('No dealers found')
+
+            if( method === 'widget' ){
+                renderWidgetError(widget, 'dealers', settings);
+            }
+            const map = e.detail.map;
+            if(e.detail.mapCenter){
+                map.setCenter(e.detail.mapCenter);
+                map.setZoom(12);
+            }
             return;
         }
 
@@ -32,7 +43,6 @@ const listenForDealers = async (method=null) => {
 
             const bounds = new google.maps.LatLngBounds();
 
-
             dealers.forEach( async dealer => {
                 const newMarker = await renderDealerMarker(dealer, map, bounds, e.detail.resize);
                 newMarkers[dealer.id] = newMarker;
@@ -49,14 +59,8 @@ const listenForDealers = async (method=null) => {
 
             const searchResultsWidgets = document.querySelectorAll(selectors.searchResultsWidget);
 
-            if( !searchResultsWidgets.length ){
-                console.error('Search results widgets are not found');
-                return;
-            }
-
             for (let i = 0; i < searchResultsWidgets.length; i++) {
                 const resultsWidget = searchResultsWidgets[i];
-                resultsWidget.innerHTML = '';
                 dealers.forEach(async (dealer) => {
                     renderDealerCard(resultsWidget, dealer);
                 });

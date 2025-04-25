@@ -4,6 +4,8 @@ const renderWidgetError = (widget, parameter, settings) => {
 
     const errorMessageContainer = widget.querySelector(selectors.errorMessage);
 
+    errorMessageContainer.innerHTML = '';
+
     let input, message, existingMessage = errorMessageContainer.innerHTML;
 
     switch (parameter) {
@@ -16,14 +18,13 @@ const renderWidgetError = (widget, parameter, settings) => {
             message = settings.missing_models_message;
             break;
         case 'dealers':
-            input = widget.querySelector(selectors.dropdownInput);
-            message = 'no dealers found';
+            message = settings.missing_dealers_message;
             break;
         default:
             break;
     }
 
-    if(settings.error_field_highlight){
+    if(input && settings.error_field_highlight){
         input.classList.add(classes.widgetInputError);
     }
 

@@ -39,11 +39,10 @@ const buildQueryParams = async (widget = null, source = null, target = "search")
             const country = placeData.address_components.filter(component => component.types.includes('country'));
             queryObject.countryCode = country[0].short_name.toLowerCase();
         }
-        if( source === 'widget' && placeData.geometry){
+        if( placeData.geometry){
             queryObject.lat = placeData.geometry.location.lat();
             queryObject.lng = placeData.geometry.location.lng();
-        }
-        if( !placeData.geometry ) {
+        } else {
             console.error("location error");
             return;
         }
