@@ -20,6 +20,9 @@ function ___mcw__search_widget_render($widget){
         class="---mcw--mcs"
         widget-control="search-widget"
         widgetType="<?php echo $settings['widget_content']; ?>"
+        <?php if( get_post_type() === 'fahrzeuge' && $settings['preselect_current_value'] === 'yes') { ?>
+            model="<?php echo get_the_ID(); ?>"
+        <?php } ?>
     >
 
         <?php

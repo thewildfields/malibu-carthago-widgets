@@ -80,3 +80,4 @@ function ___mcw__register_widget_scripts(){
 }
 
 add_action('wp_enqueue_scripts', '___mcw__register_widget_scripts');
+
