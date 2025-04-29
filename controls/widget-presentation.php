@@ -55,6 +55,21 @@ function ___mcw__widget_presentation_controls($widget){
 		);
 
         $widget->add_control(
+            'dealer_name_input_field',
+			[
+				'label' => esc_html__( 'Display Dealer Name Input', 'malibu-carthago-widgets' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'malibu-carthago-widgets' ),
+				'label_off' => esc_html__( 'No', 'malibu-carthago-widgets' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+                'condition' => [
+                    'widget_content' => 'dealers',
+                ]
+			]
+        );
+
+        $widget->add_control(
 			'dealer_name_input_field_placeholder',
 			[
 				'label' => esc_html__( 'Dealer Name Placeholder', 'malibu-carthago-widgets' ),

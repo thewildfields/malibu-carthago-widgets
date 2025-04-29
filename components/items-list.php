@@ -101,7 +101,7 @@ function ___mcw__render_items_list($widget, $settings){
 
     }
 
-    if( $settings['widget_content'] === 'dealers' ){
+    if( $settings['widget_content'] === 'dealers' && $settings['dealer_name_input_field'] === 'yes'){
         ___mcw__render_input_field($widget, $settings, 'dealerName');
     }
 

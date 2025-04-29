@@ -54,9 +54,9 @@ const validateWidget = async (widget, settings) => {
         }
     }
 
-    if( settings.preselect_current_value && getVehicleID()){
-        selectModel(widget, getVehicleID());
-    }
+    // if( settings.preselect_current_value && getVehicleID()){
+    //     selectModel(widget, getVehicleID());
+    // }
 
     Object.keys(params).forEach( p => {
         if( p !== 'widgetType'){

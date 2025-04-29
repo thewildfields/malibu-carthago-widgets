@@ -73,6 +73,14 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
                 <?php if( $settings['language_based_zooms'] === 'yes' ) { ?>
                     language-based-zooms
                 <?php } ?>
+                <?php if( $settings['show_infowindows'] === 'yes' ) { ?>
+                    email-prefix="<?php echo $settings['infowindow_text_email']; ?>"
+                    phone-prefix="<?php echo $settings['infowindow_text_phone']; ?>"
+                    website-prefix="<?php echo $settings['infowindow_text_website']; ?>"
+                    goto-prefix="<?php echo $settings['infowindow_text_go_to_website']; ?>"
+                <?php } ?>
+                
+
             >
                 <?php if( $settings['show_infowindows'] === 'yes' ) { ?>
                     <div class="---mcw--dm__infowindow">
@@ -123,6 +131,12 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
                         echo 'tax-markers="'.$settings['marker_taxonomy_icon'].'"';
                     }
                 ?>
+                <?php if( $settings['show_infowindows'] === 'yes' ) { ?>
+                    email-prefix="<?php echo $settings['infowindow_text_email']; ?>"
+                    phone-prefix="<?php echo $settings['infowindow_text_phone']; ?>"
+                    website-prefix="<?php echo $settings['infowindow_text_website']; ?>"
+                    goto-prefix="<?php echo $settings['infowindow_text_go_to_website']; ?>"
+                <?php } ?>
             ></div>
 
         <?php }

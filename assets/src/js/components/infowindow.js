@@ -1,4 +1,4 @@
-import { classes } from "./globals";
+import { classes, selectors } from "./globals";
 
 const renderText = (text, type='regular', content=null) => {
 
@@ -36,11 +36,23 @@ const infoWindowElement = (dealer) => {
     const element = document.createElement('div');
     element.classList.add(classes.infowindow);
 
+    const mapContainer = document.querySelector(selectors.mapContainer);
+
+    console.log(mapContainer.getAttribute('phone-prefix'));
+    console.log(mapContainer.getAttribute('email-prefix'));
+    console.log(mapContainer.getAttribute('website-prefix'));
+
     if( dealer.title ){ element.appendChild(renderText(dealer.title, 'title')); }
     if( dealer.formatted_address ){ element.appendChild(renderText(dealer.formatted_address)); }
-    if( dealer.phone ){ element.appendChild(renderText(dealer.phone)); }
-    if( dealer.email ){ element.appendChild(renderText(dealer.email, 'link')); }
-    if( dealer.website ){ element.appendChild(renderText(dealer.website, 'link')); }
+    if( dealer.phone ){
+        element.appendChild(renderText(mapContainer.getAttribute('phone-prefix') + dealer.phone));
+    }
+    if( dealer.email ){
+        element.appendChild(renderText(mapContainer.getAttribute('email-prefix') + dealer.email, 'link'));
+    }
+    if( dealer.website ){
+        element.appendChild(renderText(mapContainer.getAttribute('website-prefix') + dealer.website, 'link'));
+    }
     if( dealer.categories ){ element.appendChild(renderText(dealer.categories, 'regular', 'categories')); }
 
     return element;
