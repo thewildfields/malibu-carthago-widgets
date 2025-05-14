@@ -44,8 +44,10 @@ const listenForDealers = async (method=null, widget=null, settings=null) => {
             const bounds = new google.maps.LatLngBounds();
 
             dealers.forEach( async dealer => {
-                const newMarker = await renderDealerMarker(dealer, map, bounds, e.detail.resize);
-                newMarkers[dealer.id] = newMarker;
+                if(dealer.location && dealer.location.lat && dealer.location.lng){
+                    const newMarker = await renderDealerMarker(dealer, map, bounds, e.detail.resize);
+                    newMarkers[dealer.id] = newMarker;
+                }
             });
 
             setTimeout(() => {
@@ -62,7 +64,9 @@ const listenForDealers = async (method=null, widget=null, settings=null) => {
             for (let i = 0; i < searchResultsWidgets.length; i++) {
                 const resultsWidget = searchResultsWidgets[i];
                 dealers.forEach(async (dealer) => {
-                    renderDealerCard(resultsWidget, dealer);
+                    if(dealer.location && dealer.location.lat && dealer.location.lng){
+                        renderDealerCard(resultsWidget, dealer, e.detail.sourceWidgetType);
+                    }
                 });
             }
         }

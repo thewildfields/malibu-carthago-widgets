@@ -2,6 +2,13 @@
 
 function ___mcw__map_infowindow_controls($widget){
 
+    $handlertypTerms = get_terms('haendlertyp');
+
+    $handlertypTermsDisplayed = array_reduce( $handlertypTerms, function ($result, $item){
+        $result[$item->term_id] = $item->name;
+        return $result;
+    },array());
+
     $widget->start_controls_section(
         'map_infowindows_section',
         [
@@ -72,6 +79,33 @@ function ___mcw__map_infowindow_controls($widget){
 				'condition' => [
 					'show_infowindows' => 'yes'
 				]
+			]
+		);
+
+        $widget->add_control(
+            'filter_dealer_categories',
+            [
+                'label' => esc_html__( 'Filter dealer categories', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Yes', 'textdomain' ),
+                'label_off' => esc_html__( 'No', 'textdomain' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $widget->add_control(
+			'dealers_categories_to_display',
+			[
+				'label' => esc_html__( 'Categories to display', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => $handlertypTermsDisplayed,
+				'default' => [ 'title', 'description' ],
+                'condition' => [
+                    'filter_dealer_categories' => 'yes'
+                ]
 			]
 		);
 

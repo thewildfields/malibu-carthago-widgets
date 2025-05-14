@@ -137,6 +137,9 @@ class Malibu_Carthago_Dealers_Map extends \Elementor\Widget_Base {
                     website-prefix="<?php echo $settings['infowindow_text_website']; ?>"
                     goto-prefix="<?php echo $settings['infowindow_text_go_to_website']; ?>"
                 <?php } ?>
+                <?php if( $settings['filter_dealer_categories'] === 'yes' ) { ?>
+                    dealer-categories="<?php echo implode('+', $settings['dealers_categories_to_display'] ); ?>"
+                <?php } ?>
             ></div>
 
         <?php }

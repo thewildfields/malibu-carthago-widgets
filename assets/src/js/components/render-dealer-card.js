@@ -1,6 +1,6 @@
 import { classes, getMap, selectors, storage } from "./globals";
 
-const renderDealerCard = (widget, dealer) => {
+const renderDealerCard = (widget, dealer, widgetType) => {
 
     const dealerCard = document.createElement('div');
     dealerCard.setAttribute('widget-control', 'dealer-card');
@@ -41,15 +41,18 @@ const renderDealerCard = (widget, dealer) => {
     })
     dealerCard.appendChild(categories);
 
-    const modelsTitle = document.createElement('p');
-    modelsTitle.classList.add(classes.dealerCardModelsTitle);
-    modelsTitle.textContent = widget.getAttribute('available-models-text');
-    dealerCard.appendChild(modelsTitle);
+    if( widgetType === 'vehicles' ){
 
-    const models = document.createElement('p');
-    models.classList.add(classes.dealerCardModels);
-    models.textContent = dealer.models_intersect;
-    dealerCard.appendChild(models);
+        const modelsTitle = document.createElement('p');
+        modelsTitle.classList.add(classes.dealerCardModelsTitle);
+        modelsTitle.textContent = widget.getAttribute('available-models-text');
+        dealerCard.appendChild(modelsTitle);
+    
+        const models = document.createElement('p');
+        models.classList.add(classes.dealerCardModels);
+        models.innerHTML = dealer.models_intersect;
+        dealerCard.appendChild(models);
+    }
 
     const dealerResultsWidget = document.querySelector(selectors.searchResultsWidget);
     dealerResultsWidget.appendChild(dealerCard);

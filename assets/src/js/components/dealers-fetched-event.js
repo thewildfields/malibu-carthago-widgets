@@ -8,6 +8,7 @@ const dispatchDealersFetchedEvent = async (params, dealersResponse, renderCards 
     detail.map = map;
     detail.mapCenter = {lat: params.lat, lng: params.lng}
     detail.resize = resize;
+    detail.sourceWidgetType = params.widgetType;
 
     const dealersFetchedEvent = new CustomEvent("dealersFetched", {
         detail: detail
